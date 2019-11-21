@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>flex2</title>
+		<link rel="stylesheet" href="./css/index.css" />
+	</head>
+	<body>
+		<div class="canvas-x canvas-x-ani canvas-ani-paused">
+			<div class="canvas-y canvas-y-ani canvas-ani-paused">
+				<div class="canvas-z canvas-z-ani canvas-ani-paused">
+					<div class="mouse-x">
+						<div class="mouse-y">
+							<div class="box">
+								<div class="face one front">
+									<span class="dot"></span>
+								</div>
+								<div class="face two back">
+									<span class="dot"></span>
+									<span class="dot"></span>
+								</div>
+								<div class="face three up">
+									<span class="dot"></span>
+									<span class="dot"></span>
+									<span class="dot"></span>
+								</div>
+								<div class="face four down">
+									<div class="dot-row">
+										<span class="dot"></span>
+										<span class="dot"></span>
+									</div>
+									<div class="dot-row">
+										<span class="dot"></span>
+										<span class="dot"></span>
+									</div>
+								</div>
+								<div class="face five left">
+									<div class="dot-row">
+										<span class="dot"></span>
+										<span class="dot"></span>
+									</div>
+									<div class="dot-row">
+										<span class="dot"></span>
+									</div>
+									<div class="dot-row">
+										<span class="dot"></span>
+										<span class="dot"></span>
+									</div>
+								</div>
+								<div class="face six right">
+									<div class="dot-row">
+										<span class="dot"></span>
+										<span class="dot"></span>
+										<span class="dot"></span>
+									</div>
+									<div class="dot-row">
+										<span class="dot"></span>
+										<span class="dot"></span>
+										<span class="dot"></span>
+									</div>
+								</div>
+								<div class="box-axis x"></div>
+								<div class="box-axis y"></div>
+								<div class="box-axis z"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="menu">
+			<div class="menu-edit">
+				<div class="menu-edit-row">
+					<input type="number" placeholder="0%" class="menu-edit-row-input" />
+					<input type="number" placeholder="100%" class="menu-edit-row-input" />
+					<button class="button-class xBtn">X</button>
+				</div>
+				<div class="menu-edit-row">
+					<input type="number" placeholder="0%" class="menu-edit-row-input" />
+					<input type="number" placeholder="100%" class="menu-edit-row-input" />
+					<button class="button-class yBtn">Y</button>
+				</div>
+				<div class="menu-edit-row">
+					<input type="number" placeholder="0%" class="menu-edit-row-input" />
+					<input type="number" placeholder="100%" class="menu-edit-row-input" />
+					<button class="button-class zBtn">Z</button>
+				</div>
+			</div>
+			<div class="menu-other">
+				<button class="button-class autoDot">随机出点数</button>
+				<button class="button-class mourseCon">鼠标控制ani</button>
+			</div>
+		</div>
+
+	</body>
+	<script type="text/javascript" src="./js/jQuery.3.4.1.js"></script>
+	<script type="text/javascript" src="./js/index.js"></script>
+</html>
