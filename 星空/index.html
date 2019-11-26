@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" href="./index.css" />
+	</head>
+	<body>
+		<div class="sky"></div>
+		<script>
+			let $sky = document.querySelector('.sky'),
+				$ani_state = document.querySelector('.animation-state'),
+				view_width = window.innerWidth,
+				view_height = window.innerHeight,
+				star_nums = 30,
+				ani_dur = 5,
+				color_group = ['red', 'orange', 'yellow', 'green', 'blue', 'cyan', 'purple'];
+
+			window.onload = startRender();
+			window.onresize = windowSizeReload();
+			function startRender() {
+				for (let i = 0; i < star_nums; i++) {
+					(function() {
+						let star = document.createElement('div');
+						setStarAni(star, -i / 7);
+						$sky.appendChild(star);
+						star.addEventListener('animationend', function(e) {
+							star.style.animation = ``;
+							e.target.offsetWidth
+							setStarAni(star, -i / 7);
+						})
+					})(i)
+				}
+			}
+
+			function setStarAni(elem, delay) {
+				elem.style.boxShadow = setBoxShadow();
+				elem.style.animation = `star-move ${ani_dur}s linear ${delay}s 1`;
+			}
+
+			function setBoxShadow() {
+				let = 0, y = 0, blur = 0, spread = 0, color_index = 0, boxShaDow = '';
+				for (let j = 0; j < star_nums; j++) {
+					if (j != 0) boxShaDow += ',';
+					x = initRandom(-view_width, 2 * view_width);
+					y = initRandom(-view_height, 2 * view_height);
+					blur = initRandom(2, 12);
+					spread = initRandom(0, 6);
+					color_index = initRandom(0, 6);
+
+					boxShaDow += `${x}px ${y}px ${blur}px ${spread}px ${color_group[color_index]}`;
+				}
+				return boxShaDow;
+			}
+
+			function initRandom(min, max) {
+				if (typeof(min) !== 'number') {
+					throw new TypeError(`${min} is not a number`);
+				}
+				if (typeof(max) !== 'number') {
+					throw new TypeError(`${max} is not a number`);
+				}
+				min = Math.floor(min);
+				max = Math.floor(max) + 1;
+				return Math.floor(Math.random() * (max - min) + min);
+			}
+
+			function windowSizeReload() {
+				view_width = window.innerWidth
+				view_height = window.innerHeight
+			}
+		</script>
+	</body>
+</html>
