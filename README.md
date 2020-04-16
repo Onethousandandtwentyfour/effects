@@ -1,12 +1,16 @@
 ##  Effects 
 #### 0401--0430
   >*__弹弹球__* 
-   >> * div+css 实现
-   >> * canvas 实现   ...
+  >> * div+css 实现
+  >> * canvas 实现   ...
   >*__svg镂空文本__*  
-  >*__svg文字路径动画__*  
+  >> *
+  >*__svg文字路径动画__* 
+  >> *
   >*__长阴影__*
+  >> *
   >*__初识canvas__*
+  >> *
    
 1.[弹弹球](https://onethousandandtwentyfour.github.io/effects/%e5%bc%b9%e5%bc%b9%e7%90%83/)
 
