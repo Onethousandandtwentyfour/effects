@@ -1,5 +1,5 @@
 ##  Effects 
-#### 0401--0430
+***
   > *__弹弹球__* 
   >> * div+css 实现
   >> * canvas 实现
@@ -16,7 +16,7 @@
   > *__初识canvas__*
   >> *
   
-#### 0501--0531
+***
   > ...
 1.[弹弹球](https://onethousandandtwentyfour.github.io/effects/%e5%bc%b9%e5%bc%b9%e7%90%83/)
 
