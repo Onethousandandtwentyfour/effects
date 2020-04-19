@@ -5,7 +5,7 @@
   >> * canvas 实现
   
   > *__svg镂空文本__*
-  >> *
+  >> * [svg实现](https://onethousandandtwentyfour.github.io/effects/unit1/svg%e9%95%82%e7%a9%ba%e6%96%87%e6%9c%ac/)
   
   > *__svg文字路径动画__*
   >> *
