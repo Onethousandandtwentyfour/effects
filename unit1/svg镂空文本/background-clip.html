@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>background-clip</title>
+		<style>
+			*{
+				margin:0;
+				padding: 0;
+			}
+			html,body{
+				height:100%;
+			}
+			.fill-box{
+				width:100%;
+				height:100%;
+			}
+			.box{
+				font-size: 100px;
+				position: relative;
+			}
+			.video-box{
+				position: absolute;
+				left:0;
+				top:0;
+				overflow: hidden;
+				display: flex;
+				justify-content: center;
+				align-items: flex-start;
+			}
+			.video-box video{
+				width:100%;
+				height:100%;
+				object-fit: fill;
+			}
+			.video-box:before{
+				content:'background-clip';
+				width:100%;
+				height:100%;
+				position: absolute;
+				left:0;
+				top:0;
+				z-index: 1;
+				
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				white-space: nowrap;
+				
+				background-color:rgba(0,0,0,0.6);
+				
+				font-size: 1.5em;
+				font-weight: bold;
+				
+				-webkit-background-clip:text;
+				-webkit-text-fill-color: transparent;
+			}
+			.video-box:after{
+				content:'';
+				width:100%;
+				height:100%;
+				position: absolute;
+				left:0;
+				top:0;
+				background-color:rgba(240,240,240,0.6);
+			}
+			</style>
+	</head>
+	<body>
+		<div class="fill-box box">
+			<div class="fill-box video-box">
+				<video autoplay muted loop preload>
+					<source src="https://github.com/Onethousandandtwentyfour/effects/new/master/unit1/svg%E9%95%82%E7%A9%BA%E6%96%87%E6%9C%AC/bgmovie.mp4" type="video/mp4"></source>
+				</video>
+			</div>
+		</div>
+	</body>
+</html>
