@@ -1,23 +1,25 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-
 	<head>
 		<meta charset="utf-8">
 		<title>svg镂空文本</title>
-		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<style>
+			/* <!doctype html> 有声明按w3c标准（降低对浏览器的依赖性），不加按浏览器默认标准，,所以头部加不加<!doctype html>对文档的body高度有影响 */
 			*{
 				margin: 0;
 				padding:0;
 			}
+			html,body{
+				height:100%;
+			}
+			.fill-box{
+				width:100%;
+				height:100%;
+			}
 			.box{
-				width:100vw;
-				height:100vh;
 				position: relative;
 			}
 			.video-box{
-				width:100%;
-				height:100%;
 				position: absolute;
 				left:0;
 				top:0;
@@ -26,10 +28,14 @@
 				justify-content: center;
 				align-items: flex-start;
 			}
-			svg{
-				position: relative;
+			.video-box video{
 				width:100%;
 				height:100%;
+				object-fit: fill;
+			}
+			
+			.box svg{
+				position: relative;
 				text-align: center;
 				font-size: 100px;
 			}
@@ -38,43 +44,39 @@
 				height:100%; */
 			}
 			.dialog-rect{
-				width:100%;
-				height:100%;
 				fill:rgb(140,140,140);
 			}
 			.dialog-text{
 				display: block;
 				white-space: nowrap;
-				font-size: 2em;
+				font-size: 1em;
 				font-weight: bold;
 				text-anchor: middle;
 				fill:black;
 			}
 			.svg-rect{
-				width:100%;
-				height:100%;
-				fill:MediumSlateBlue;
+				fill:white;
 				mask:url(#svg-dialog);
 			}
 		</style>
 	</head>
 	<body>
-		<div class="box">
-			<div class="video-box">
+		<div class="fill-box box">
+			<div class="fill-box video-box">
 				<video autoplay muted loop preload>
-					<source src="./bgmovie.mp4" type="video/mp4"></source>
+					<source src="https://onethousandandtwentyfour.github.io/effects/unit1/svg%e9%95%82%e7%a9%ba%e6%96%87%e6%9c%ac/bgmovie.mp4" type="video/mp4"></source>
 				</video>
 			</div>
-			<svg preserveAspectRatio="xMidYMid meet" >
+			<svg viewBox="0 0 500 300" preserveAspectRatio="xMidYMid slice"  class="fill-box" >
 				<defs>
 					//defs 预定义一个元素使其能够在SVG图像中重复使用
-					<mask id="svg-dialog" class="svg-dialog" x="0" y="0">
+					<mask id="svg-dialog" class="fill-box svg-dialog" x="0" y="0">
 						//mask  蒙版 mask内的元素 fill为black时不可见(露出父级背景)，white可见
-						<rect class="dialog-rect" x="0" y="0"></rect>
+						<rect class="fill-box dialog-rect" x="0" y="0"></rect>
 						<text class="dialog-text" x="50%" y="60%">SVG<text>
 					</mask>
 				</defs>
-				<rect class="svg-rect" x="0" y="0"></rect>
+				<rect class="fill-box svg-rect" x="0" y="0"></rect>
 				//添加mask后，背景色被mask遮住，mask内dialog-rect的fill取black和white中间值相当于控制蒙版的透明度,并不是给dialog-rect设置填充色
 			</svg>
 			
