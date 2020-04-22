@@ -10,6 +10,7 @@
   
   > *__svg文字路径动画__*
   >> * [svg](https://onethousandandtwentyfour.github.io/effects/unit1//svg%e6%96%87%e5%ad%97%e8%b7%af%e5%be%84%e5%8a%a8%e7%94%bb)
+  >> * [svg-1](https://onethousandandtwentyfour.github.io/effects/unit1//svg%e6%96%87%e5%ad%97%e8%b7%af%e5%be%84%e5%8a%a8%e7%94%bb/index-1.html)
   
   > *__长阴影__*
   >> *
