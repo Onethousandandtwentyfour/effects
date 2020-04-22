@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>svg路径动画</title>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			html,body{
+				height:100%;
+			}
+			.box{
+				width:100%;
+				height:100%;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				overflow: hidden;
+			}
+			svg{
+				/* background-color:rgba(0,0,0,0.1); */
+			}
+			.svg-use{
+				stroke-linecap: round;
+				stroke-linejoin: round;
+				fill:none;
+			}
+			.stroke-move{
+				stroke-dasharray: 634;
+				stroke-dashoffset: 634;
+				animation: stroke-in-ani 1s linear 1 forwards;
+			}
+			@keyframes stroke-in-ani{
+				0%{
+					stroke-dashoffset: 634;
+				}
+				100%{
+					stroke-dashoffset:0;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<svg width="60%" preserveAspectRatio="xMidYMid meet" viewBox="0 0 1024 768">
+				<defs>
+					<g id="svg-first-path" >
+						<path class="st0" d="M473.5,347.5c60-3.67,120-7.33,180-11"/>
+					</g>
+					<g id="svg-second-path" >
+						<path class="st0" d="M528.5,320.5c0,16,0,32,0,48"/>
+					</g>
+					<g id="svg-third-path" >
+						<path class="st0" d="M603.5,311.5c-10.98,21.3-27.55,51.75-50,87c-30.91,48.54-79.01,124.08-101,116c-5.74-2.11-11.88-10.71-12-41"	/>
+					</g>
+					<g id="svg-four-path" >
+						<path class="st1" d="M569.5,396.5c46.74-3.08,80.62-1.85,83,8c4.95,20.5-129.48,66.49-126,77c1.44,4.34,26.04,1.6,91-14"/>
+					</g>
+					<g id="svg-five-path" >
+						<path class="st1" d="M575.5,421.5c2.38,7.65,31.62,103.79,4,119c-4.67,2.57-17,6.15-46-15"/>
+					</g>
+					<g id="svg-six-path" >
+						<path class="st1" d="M499.5,513.5c-4,13-8,26-12,39"/>
+					</g>
+					<g id="svg-seven-path" >
+						<path class="st1" d="M609.5,502.5c9.33,9,18.67,18,28,27"/>
+					</g>
+				</defs>
+				<use class="svg-use stroke-move" style="animation-delay: 0s;" stroke="orange" stroke-width="20" xlink:href="#svg-first-path"></use>
+				<use class="svg-use stroke-move" style="animation-delay: 0.5s;" stroke="orange" stroke-width="20" xlink:href="#svg-second-path"></use>
+				<use class="svg-use stroke-move" style="animation-delay: 1s;" stroke="orange" stroke-width="20" xlink:href="#svg-third-path"></use>
+				<use class="svg-use stroke-move" style="animation-delay: 1.8s;" stroke="orange" stroke-width="20" xlink:href="#svg-four-path"></use>
+				<use class="svg-use stroke-move" style="animation-delay: 2.8s;" stroke="orange" stroke-width="20" xlink:href="#svg-five-path"></use>
+				<use class="svg-use stroke-move" style="animation-delay: 3.3s;" stroke="orange" stroke-width="20" xlink:href="#svg-six-path"></use>
+				<use class="svg-use stroke-move" style="animation-delay: 3.8s;" stroke="orange" stroke-width="20" xlink:href="#svg-seven-path"></use>
+			</svg>
+		</div>
+	</body>
+</html>
