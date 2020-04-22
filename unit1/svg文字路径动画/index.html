@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>svg路径动画</title>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			html,body{
+				height:100%;
+			}
+			.box{
+				width:100%;
+				height:100%;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				overflow: hidden;
+			}
+			svg{
+				/* background-color:rgba(0,0,0,0.1); */
+			}
+			.svg-use{
+				stroke-linecap: round;
+				stroke-linejoin: round;
+				fill:none;
+			}
+			.first-stroke-move{
+				stroke-dasharray: 400;
+				stroke-dashoffset: 400;
+				animation: first-stroke-ani 10s linear 1 forwards;
+			}
+			.second-stroke-move{
+				stroke-dasharray: 400;
+				stroke-dashoffset: 400;
+				animation: second-stroke-ani 10s linear 1 forwards;
+			}
+			.third-stroke-move{
+				stroke-dasharray: 400;
+				stroke-dashoffset: 400;
+				animation: third-stroke-ani 10s linear 1 forwards;
+			}
+			@keyframes first-stroke-ani{
+				0%{
+					stroke-dashoffset: 400;
+				}
+				35%,65%{
+					stroke-dashoffset: 0;
+				}
+				100%{
+					stroke-dashoffset: 400;
+				}
+			}
+			@keyframes second-stroke-ani{
+				0%,10%{
+					stroke-dashoffset: 400;
+				}
+				45%,60%{
+					stroke-dashoffset: 0;
+				}
+				95%,100%{
+					stroke-dashoffset: 400;
+				}
+			}
+			@keyframes third-stroke-ani{
+				0%,20%{
+					stroke-dashoffset: 400;
+				}
+				55%,55%{
+					stroke-dashoffset: 0;
+				}
+				90%,100%{
+					stroke-dashoffset: 400;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<svg width="60%" preserveAspectRatio="xMidYMid meet" viewBox="0 0 1366 768">
+				<defs>
+					<g id="svg-text" >
+						<path class="st0" d="M473.5,347.5c60-3.67,120-7.33,180-11"/>
+						<path class="st0" d="M528.5,320.5c0,16,0,32,0,48"/>
+						<path class="st0" d="M603.5,311.5c-10.98,21.3-27.55,51.75-50,87c-30.91,48.54-79.01,124.08-101,116c-5.74-2.11-11.88-10.71-12-41"
+							/>
+						<path class="st0" d="M638.5,396.5"/>
+						<path class="st1" d="M569.5,396.5c46.74-3.08,80.62-1.85,83,8c4.95,20.5-129.48,66.49-126,77c1.44,4.34,26.04,1.6,91-14"/>
+						<path class="st1" d="M575.5,421.5c2.38,7.65,31.62,103.79,4,119c-4.67,2.57-17,6.15-46-15"/>
+						<path class="st1" d="M499.5,513.5c-4,13-8,26-12,39"/>
+						<path class="st1" d="M609.5,502.5c9.33,9,18.67,18,28,27"/>
+						<path class="st1" d="M146.5,274.5"/>
+					</g>
+				</defs>
+				<use class="svg-use first-stroke-move" stroke="orange" stroke-width="5" xlink:href="#svg-text"></use>
+				<use class="svg-use second-stroke-move" stroke="pink" stroke-width="8" xlink:href="#svg-text"></use>
+				<use class="svg-use third-stroke-move" stroke="purple" stroke-width="20" xlink:href="#svg-text"></use>
+			</svg>
+		</div>
+	</body>
+</html>
