@@ -1,8 +1,8 @@
 ##  Effects 
 #### Unit1
   > *__弹弹球__* 
-  >> * [div+css 实现](https://onethousandandtwentyfour.github.io/effects/unit1/%e5%bc%b9%e5%bc%b9%e7%90%83/)
-  >> * canvas 实现
+  >> * [div+css](https://onethousandandtwentyfour.github.io/effects/unit1/%e5%bc%b9%e5%bc%b9%e7%90%83/)
+  >> * canvas
   
   > *__svg镂空文本__*
   >> * [svg(mask)](https://onethousandandtwentyfour.github.io/effects/unit1/svg%e9%95%82%e7%a9%ba%e6%96%87%e6%9c%ac/index-1.html)
