@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>canvas镂空文本+球体移动</title>
+		<style>
+			*{
+				padding: 0;
+				margin:0;
+			}
+			:root{
+				--canvas-width-:64vw;
+			}
+			html,body{
+				height:100%;
+				
+			}
+			.box{
+				width:100%;
+				height:100%;
+				overflow: hidden;
+			}
+			#canvas{
+				width:var(--canvas-width-);
+				height:calc(var(--canvas-width-) * 460 / 1920);
+				position: fixed;
+				left:50%;
+				top:50%;
+				transform: translate(-50%,-50%);
+			}
+			p.front-text{
+				user-select: none;
+				width:100%;
+				height:100%;
+				position: fixed;
+				font-size: 15vw;
+				font-weight: bold;
+				color: white;
+				background:rgba(0,0,0,1);
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				mix-blend-mode: multiply;
+			} 
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<canvas id="canvas" width="1920" height="460">您的浏览器不支持canvas（no support canvas）</canvas>
+			<p class="front-text">CANVAS</p>
+		</div>
+	</body>
+	<script type="text/javascript">
+		let [fps,lastDate]=[30,0];
+		let canvasObj = document.querySelector('#canvas').getContext('2d'),
+			circleInfo =[];
+			createCircle(100);
+			clipAni();
+		
+		function createCircle(num){
+			for(let i=0;i<num;i++){
+				let [x,y,r] =[canvasObj.canvas.width*Math.random(),
+							canvasObj.canvas.height*Math.random(),
+							60*Math.random()+10];
+				circleInfo[i]={
+					x:(x - r)>0&&(x+r<=canvasObj.canvas.width)?x:(canvasObj.canvas.width)/2,
+					y:(y - r)>0&&(y+r<=canvasObj.canvas.height)?y:(canvasObj.canvas.height)/2,
+					r:r,
+					vx:4*Math.random()-2,
+					vy:4**Math.random()-2,
+					color:`rgba(${(Math.random()*255).toFixed(0)},${(Math.random()*255).toFixed(0)},${(Math.random()*255).toFixed(0)},${(0.5+Math.random()*0.5).toFixed(1)})`,
+				}
+			}
+		}
+		function drawCircle(){
+			canvasObj.clearRect(0,0,canvasObj.canvas.width,canvasObj.canvas.height);
+			circleInfo.forEach((item)=>{
+				canvasObj.beginPath();
+				canvasObj.arc(item.x,item.y,item.r,0,Math.PI*2,false);
+				canvasObj.fillStyle=item.color;
+				canvasObj.fill();
+				moveCircle(item);
+			});
+		}
+		function moveCircle(circle){
+			if((circle.x-circle.r<=0) || (circle.x+circle.r>=canvasObj.canvas.width)){
+				circle.vx = -circle.vx;
+			}
+			if((circle.y - circle.r <=0) || (circle.y+circle.r>=canvasObj.canvas.height)){
+				circle.vy = - circle.vy;
+			}
+			circle.x += circle.vx;
+			circle.y += circle.vy;
+		}
+		function clipAni(){
+			let nowDate = Date.now();
+			if((nowDate - lastDate) < (1000/fps)){
+				requestAnimationFrame(clipAni);
+				return;
+			}
+			lastDate = nowDate;
+			drawCircle();
+			requestAnimationFrame(clipAni);
+		}
+	</script >
+</html>
