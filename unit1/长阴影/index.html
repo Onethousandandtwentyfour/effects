@@ -21,9 +21,10 @@
 				--box-height-:calc(var(--box-width-));
 				width:var(--box-width-);
 				height:var(--box-height-);
-				background-color: white;
+				background-color: rgba(0,0,0,0.6);
 				border-radius: 50%;
 				overflow: hidden;
+				transition: box-shadow 1s ease-out,background 1s ease-out;
 			}
 			.single-word{
 				user-select: none;
@@ -33,7 +34,7 @@
 				text-align: center;
 				letter-spacing: 10px;
 				white-space: nowrap;
-				transition: text-shadow 0.3s ease-out;
+				transition: text-shadow 1s ease-out;
 				
 			}
 		</style>
@@ -46,8 +47,10 @@
 	<script src="./jquery-1.12.4.js"></script>
 	<script>
 		$(function(){
-			$(".single-word").css('text-shadow',createTextShadow(0));
-			$(".box").css({'background':createLinearGradient(),'box-shadow':createTextShadow(0)});
+			setTimeout(()=>{
+				$(".single-word").css('text-shadow',createTextShadow(0));
+				$(".box").css({'background':createLinearGradient(),'box-shadow':createTextShadow(0)});
+			},1000);
 		});
 		function createTextShadow(rotate,length=15){
 			let x=0,y=0,blur=0,color="",textShaDow=[];
