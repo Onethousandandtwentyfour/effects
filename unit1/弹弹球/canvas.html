@@ -30,12 +30,13 @@
 			</canvas>
 		</div>
 		<script>
-			let [fps,lastDate]=[30,0],
+			let [fps,lastDate]=[60,0],
 				vw=window.innerWidth,vh=vw*1080/1920;
 			let canvas=document.querySelector('canvas'),
 				canvasContext = canvas.getContext('2d')
 				circleArr=[],
-				createR=10;
+				createR=50,
+				num=10;
 				clipAni();
 			window.onresize=windowSizeChange;
 			canvas.addEventListener('click',mouseClick);
@@ -45,20 +46,26 @@
 					{min: x - createR,max: x + createR},
 					{min: y - createR,max: y + createR}],
 					circles=createCircle(xArea,yArea);
-					circleArr=circleArr.concat(circles);
+					if(circleArr.length>=200){
+						circleArr.splice(0,num);
+					}else{
+					  circleArr=circleArr.concat(circles);
+					}
+					console.log(circleArr.length);
 			}
-			function createCircle(cw,ch,num=10){
+			function createCircle(cw,ch){
 				let circleInfos=[],
 					i=0,
 					maxW=canvasContext.canvas.width,
 					maxH=canvasContext.canvas.height;;
-				while(i<=num){
+				while(i<num){
+					let [x,y,r,vx,vy] =[randomVal(cw.max,cw.min),randomVal(ch.max,ch.min),randomVal(60,5),randomVal(4,2),randomVal(3,1)];
 					circleInfos[i]={
-						x:randomVal(cw.max,cw.min),
-						y:randomVal(ch.max,ch.min),
-						r:Math.random()*50+10,
-						vx:4*Math.random()-2,
-						vy:4**Math.random()-2,
+						x:x<(r+vx)?(r+vx):x>(maxW-r-vx)?(maxW-r-vx):x,
+						y:y<(r+vy)?(r+vy):y>(maxH-r-vy)?(maxH-r-vy):y,
+						r:r,
+						vx:Math.random()>0.5?-vx:vx,
+						vy:Math.random()>0.5?-vy:vy,
 						fill:`rgba(${Math.random()*250},${Math.random()*250},${Math.random()*250},${Math.random()})`
 					};
 					i++;
