@@ -31,7 +31,7 @@
 		</div>
 		<script>
 			let [fps,lastDate]=[60,0],
-				vw=window.innerWidth,vh=vw*1080/1920;
+				vw=window.innerWidth;
 			let canvas=document.querySelector('canvas'),
 				canvasContext = canvas.getContext('2d')
 				circleArr=[],
@@ -51,7 +51,6 @@
 					}else{
 					  circleArr=circleArr.concat(circles);
 					}
-					console.log(circleArr.length);
 			}
 			function createCircle(cw,ch){
 				let circleInfos=[],
@@ -59,7 +58,8 @@
 					maxW=canvasContext.canvas.width,
 					maxH=canvasContext.canvas.height;;
 				while(i<num){
-					let [x,y,r,vx,vy] =[randomVal(cw.max,cw.min),randomVal(ch.max,ch.min),randomVal(60,5),randomVal(4,2),randomVal(3,1)];
+					let maxR = (vw*1080/1920/2)>60?60:vw*1080/1920/4;
+					let [x,y,r,vx,vy] =[randomVal(cw.max,cw.min),randomVal(ch.max,ch.min),randomVal(maxR,5),randomVal(4,2),randomVal(3,1)];
 					circleInfos[i]={
 						x:x<(r+vx)?(r+vx):x>(maxW-r-vx)?(maxW-r-vx):x,
 						y:y<(r+vy)?(r+vy):y>(maxH-r-vy)?(maxH-r-vy):y,
@@ -104,7 +104,7 @@
 			}
 			function windowSizeChange(){
 				vw=window.innerWidth;
-				vh=window.innerHeight;
+				console.log(vw);
 			}
 			function randomVal(max,min){
 				max = max*1920/vw;
