@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>canvas弹弹球</title>
+		<style>
+			*{
+				margin:0;
+				padding: 0;
+			}
+			:root{
+				--canvas-width-:100vw;
+			}
+			html,body,.box{
+				width:100%;
+				height:100%;
+				overflow: hidden;
+			}
+			.box canvas{
+				width:var(--canvas-width-);
+				height:calc(var(--canvas-width-)*1080/1920);
+				background:rgba(216,191,216,0.3);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<canvas width="1920" height="1080" >
+				浏览器不支持canvas
+			</canvas>
+		</div>
+		<script>
+			let [fps,lastDate]=[30,0],
+				vw=window.innerWidth,vh=vw*1080/1920;
+			let canvas=document.querySelector('canvas'),
+				canvasContext = canvas.getContext('2d')
+				circleArr=[],
+				createR=10;
+				clipAni();
+			window.onresize=windowSizeChange;
+			canvas.addEventListener('click',mouseClick);
+			function mouseClick(ev){
+				let {x,y}=ev,
+					[xArea,yArea]=[
+					{min: x - createR,max: x + createR},
+					{min: y - createR,max: y + createR}],
+					circles=createCircle(xArea,yArea);
+					circleArr=circleArr.concat(circles);
+			}
+			function createCircle(cw,ch,num=10){
+				let circleInfos=[],
+					i=0,
+					maxW=canvasContext.canvas.width,
+					maxH=canvasContext.canvas.height;;
+				while(i<=num){
+					circleInfos[i]={
+						x:randomVal(cw.max,cw.min),
+						y:randomVal(ch.max,ch.min),
+						r:Math.random()*50+10,
+						vx:4*Math.random()-2,
+						vy:4**Math.random()-2,
+						fill:`rgba(${Math.random()*250},${Math.random()*250},${Math.random()*250},${Math.random()})`
+					};
+					i++;
+				}
+				return circleInfos;
+			}
+			function drwaSingleCircle(){
+				canvasContext.clearRect(0,0,canvasContext.canvas.width,canvasContext.canvas.height);
+				circleArr.forEach((item)=>{
+					canvasContext.beginPath();
+					canvasContext.arc(item.x,item.y,item.r,0,Math.PI*2,false);
+					canvasContext.fillStyle=item.fill;
+					canvasContext.fill();
+					nextFps(item);
+				});
+			}
+			function nextFps(circle){
+				if((circle.x - circle.r<=0) || (circle.x+circle.r>=canvasContext.canvas.width)){
+					circle.vx = -circle.vx;
+				}
+				if((circle.y - circle.r <=0) || (circle.y+circle.r>=canvasContext.canvas.height)){
+					circle.vy = - circle.vy;
+				}
+				circle.x += circle.vx;
+				circle.y += circle.vy;
+			}
+			function clipAni(){
+				let nowDate = Date.now();
+				if((nowDate - lastDate) < (1000/fps)){
+					requestAnimationFrame(clipAni);
+					return;
+				}
+				lastDate = nowDate;
+				drwaSingleCircle();
+				requestAnimationFrame(clipAni);
+			}
+			function windowSizeChange(){
+				vw=window.innerWidth;
+				vh=window.innerHeight;
+			}
+			function randomVal(max,min){
+				max = max*1920/vw;
+				min = min*1080/(vw*1080/1920);
+				return min+(max - min)*Math.random();
+			}
+		</script>
+	</body>
+</html>
