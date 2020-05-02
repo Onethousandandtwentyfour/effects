@@ -18,8 +18,6 @@
   > *__初识canvas__*
   >> * [canvas](https://onethousandandtwentyfour.github.io/effects/unit1/%e5%88%9d%e8%af%86canvas)
   
-  >>> * [90%](https://onethousandandtwentyfour.github.io/effects/unit1/%e5%88%9d%e8%af%86canvas/cachu.index)
-  
 #### Unit2
   > ...
   
@@ -34,5 +32,7 @@
 
   *  [星空](https://onethousandandtwentyfour.github.io/effects/extend/%e6%98%9f%e7%a9%ba/)
   *  [骰子](https://onethousandandtwentyfour.github.io/effects/extend/%e9%aa%b0%e5%ad%90/)
+  
+  * [~~擦除90%~~](https://onethousandandtwentyfour.github.io/effects/unit1/%e5%88%9d%e8%af%86canvas/cachu.html)
 
 
