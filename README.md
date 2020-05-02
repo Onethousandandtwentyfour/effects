@@ -17,6 +17,7 @@
   
   > *__初识canvas__*
   >> * [canvas](https://onethousandandtwentyfour.github.io/effects/unit1/%e5%88%9d%e8%af%86canvas)
+  >> * [~~擦除~~](https://onethousandandtwentyfour.github.io/effects/unit1/%e5%88%9d%e8%af%86canvas/cachu.index)
   
 #### Unit2
   > ...
