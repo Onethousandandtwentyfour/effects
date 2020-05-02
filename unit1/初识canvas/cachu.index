@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>擦除</title>
+		<style>
+			*{
+				margin:0;
+				padding: 0;
+			}
+			:root{
+				--canvas-width-:50vw;
+			}
+			html,body,.box{
+				width:100%;
+				height:100%;
+				overflow: hidden;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			.box canvas{
+				width:var(--canvas-width-);
+				height:calc(var(--canvas-width-)*1080/1920);
+				background:url(local.jpg) no-repeat;
+				background-size: 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box" >
+			<canvas width="1202" height="676"></canvas>
+		</div>
+		<script>
+			let [fps,lastDate,lastPoint,vw,vh]=[100,0,{x:0,y:0},window.innerWidth,window.innerHeight];
+			let canvas = document.querySelector("canvas"),
+				canvasContext=canvas.getContext('2d');
+				
+				canvasContext.fillStyle="#778899";
+				canvasContext.fillRect(0,0,1202,676);
+				canvasContext.globalCompositeOperation ="destination-out";
+				
+				canvas.addEventListener('mousemove',(ev)=>{
+					let nowDate = Date.now();
+					if(nowDate-lastDate<(1000/fps)){
+						return;
+					}
+					let {x,y}=windowToCanvasSizeChange(ev),r=60;
+						drawCircle(x,y,r);
+						lastPoint={x:x,y:y};
+				});
+				window.onresize=function(){
+					vw=window.innerWidth;
+					vh=window.innerHeight;
+				}
+				function windowToCanvasSizeChange(mouse){
+					let marginSize = {x:0.25*vw,y:(vh - (0.5*vw*676/1202))/2},
+						leftSize = {x:mouse.x - marginSize.x,y:mouse.y - marginSize.y};
+					return {x:leftSize.x*1202/(0.5*vw),y:leftSize.y*676/(0.5*vw*676/1202)};
+				}
+				function drawCircle(x,y,r=60){
+					canvasContext.beginPath();
+					canvasContext.arc(x,y,r,0,Math.PI*2,false);
+					canvasContext.fill();
+				}
+		</script>
+	</body>
+</html>
