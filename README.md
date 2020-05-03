@@ -19,7 +19,17 @@
   >> * [canvas](https://onethousandandtwentyfour.github.io/effects/unit1/%e5%88%9d%e8%af%86canvas)
   
 #### Unit2
-  > ...
+  > *__旋转的骰子__*
+  >> *
+  
+  > *__svg滤镜-1__*
+  >> * 
+  
+  > *__让图片中的水动起来————*
+  >> *
+  
+  > *__canvas绘画基础__*
+  >> *
   
 #### Unit3
   > ...
