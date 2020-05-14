@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>canvas基础</title>
+		<style>
+			* {
+				padding: 0;
+				margin: 0;
+			}
+
+			html,
+			body {
+				height: 100%;
+			}
+
+			.box {
+				width: 100%;
+				height: 100%;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				background: #666;
+			}
+
+			.box>canvas {
+				--canvas-width-: 60vw;
+				width: var(--canvas-width-);
+				height: calc(var(--canvas-width-)*1080/1920);
+				/* background: linear-gradient(135deg, red, orange, yellow, green, blue, cyan, purple); */
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<canvas width="1920" height="1080"></canvas>
+		</div>
+		<script>
+			let canvas = document.querySelector('canvas'),
+				canvasContext = canvas.getContext('2d'),
+				loading = 0,
+				lastDate = 0,
+				fps = 60;
+			let circle = {
+				x: canvasContext.canvas.width / 2,
+				y: canvasContext.canvas.height / 2,
+				r: 490
+			};
+
+			//y=Asin(ax+b)+c
+			//y 分项高
+			//A 幅度值
+			//a 与周期T有关
+			//x 分项
+			//b x轴偏移值
+			//c y轴偏移值
+			//每帧都有一个完整的波形
+			//Math.PI/a = t = r
+			let t = circle.r/2,
+				wave = {
+					initX: circle.x - circle.r - 100,
+					initY: circle.y + circle.y,
+					A: circle.r / 8,
+					a: Math.PI / t,
+					b: Math.PI / 10,
+					c:0,
+				}
+				
+			aniFrames();
+
+			function aniFrames() {
+				let interval = 1000 / fps,
+					nowDate = Date.now();
+				if (loading >= 100) {
+					loading = 0;
+					requestAnimationFrame(aniFrames);
+					return;
+				} else
+				if (nowDate - lastDate <= interval) {
+					requestAnimationFrame(aniFrames);
+					return;
+				}
+				lastDate = nowDate;
+				loading += 0.1;
+				canvasContext.clearRect(0, 0, canvasContext.canvas.width, canvasContext.canvas.height);
+				drawClip();
+				drawCircle();
+				drawText();
+				requestAnimationFrame(aniFrames);
+			}
+
+
+			function drawCircle() {
+				canvasContext.save();
+				canvasContext.strokeStyle = "#00FFFF";
+				canvasContext.lineCap = 'round';
+				canvasContext.lineWidth = 100;
+				canvasContext.beginPath();
+				canvasContext.arc(circle.x, circle.y, circle.r, -Math.PI / 2, ((loading / 25) -
+					1) * Math.PI / 2, false);
+				canvasContext.stroke();
+				canvasContext.restore();
+			}
+
+			function drawWave(sp,color) {
+				canvasContext.fillStyle = color;
+				canvasContext.beginPath();
+				canvasContext.moveTo(wave.initX, wave.initY);
+				wave.c=2 * circle.r * (loading / 100);
+				for (let i = 1; i < 2 * circle.r+100; i++) {
+					let sx = i * wave.a + wave.b*loading*10*sp;
+					canvasContext.lineTo(wave.initX + i, wave.initY + wave.A * Math.sin(sx) - wave.c);
+				}
+				canvasContext.lineTo(wave.initX + 2 * circle.r+100, wave.initY);
+				canvasContext.closePath();
+				canvasContext.fill();
+			}
+
+			function circleClip() {
+				canvasContext.beginPath();
+				// canvasContext.fillStyle="rgba(0,0,0,0.1)";
+				canvasContext.arc(circle.x, circle.y, circle.y, 0,2*Math.PI, false);
+				canvasContext.clip();
+			}
+			
+			function drawClip(){
+				canvasContext.save();
+				circleClip();
+				drawWave(1,'rgba(0,0,0,0.2)');
+				drawWave(-1,'rgba(250,250,250,0.2)');
+				canvasContext.restore();
+			}
+			
+			function drawText(){
+				canvasContext.save();
+				canvasContext.fillStyle= 'orange';
+				canvasContext.textAlign= 'center';
+				canvasContext.textBaseline = 'middle'
+				canvasContext.font= '150px impact';
+				canvasContext.fillText(loading.toFixed(0)+'%',circle.x, circle.y);
+				canvasContext.restore();
+			}
+		</script>
+	</body>
+</html>
