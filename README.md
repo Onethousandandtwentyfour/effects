@@ -29,7 +29,7 @@
   >> *
   
   > *__canvas绘画基础__*
-  >> *
+  >> * [canvas](https://onethousandandtwentyfour.github.io/effects/unit2/canvas%e7%bb%98%e7%94%bb%e5%9f%ba%e7%a1%80)
   
 #### Unit3
   > ...
