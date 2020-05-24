@@ -1,0 +1,237 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+
+html,
+body {
+	height: 100%;
+	background: #666;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.box {
+	--point-color-:purple;
+	--point-size-:35px;
+	--face-size-:200px;
+	width: calc(var(--face-size-)*2);
+	height: calc(var(--face-size-)*2);
+	border-radius: 50%;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.box::before{
+	content: '';
+	width:100%;
+	height:1px;
+	box-sizing: border-box;
+	position: absolute;
+	background-color: wheat;
+	animation: z-ani 1s linear infinite forwards;
+}
+.box::after{
+	content: '';
+	width:1px;
+	height:100%;
+	box-sizing: border-box;
+	position: absolute;
+	background-color: wheat;
+	animation: z-ani 1s linear infinite forwards;
+}
+.outer-box,.middle-box{
+	width:var(--face-size-);
+	height:var(--face-size-);
+	position: relative;
+	z-index: 1;
+	transform-style: preserve-3d;
+}
+/* 点面布局 */
+.face{
+	position: absolute;
+	left:0;
+	top:0;
+	width:100%;
+	height:100%;
+	background:white;
+	border-radius: 10px;
+	box-shadow: 0 0 10px #666 inset;
+	font-size: 0px;
+	transform-style: preserve-3d;
+}
+.point{
+	display: block;
+	width:var(--point-size-);
+	height:var(--point-size-);
+	border-radius: 50%;
+	background:var(--point-color-);
+	box-shadow: 3px 3px 6px black inset;
+}
+.one{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.two{
+}
+.two .point:nth-child(1){
+	position: absolute;
+	left:20%;
+	top:20%;
+}
+.two .point:nth-child(2){
+	position: absolute;
+	bottom:20%;
+	right:20%;
+}
+.three{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.three .point:nth-child(1){
+	position: absolute;
+	left:20%;
+	top:20%;
+}
+.three .point:nth-child(2){
+	position: absolute;
+	bottom:20%;
+	right:20%;
+}
+.four{
+}
+.four .point:nth-child(1){
+	position: absolute;
+	left:20%;
+	top:20%;
+}
+.four .point:nth-child(2){
+	position: absolute;
+	left:20%;
+	bottom:20%;
+}
+.four .point:nth-child(3){
+	position: absolute;
+	right:20%;
+	top:20%;
+}
+.four .point:nth-child(4){
+	position: absolute;
+	right:20%;
+	bottom:20%;
+	}
+.five{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.five .point:nth-child(1){
+	position: absolute;
+	left:20%;
+	top:20%;
+}
+.five .point:nth-child(2){
+	position: absolute;
+	left:20%;
+	bottom:20%;
+}
+.five .point:nth-child(3){
+	position: absolute;
+	right:20%;
+	top:20%;
+}
+.five .point:nth-child(4){
+	position: absolute;
+	right:20%;
+	bottom:20%;
+	}
+.six{
+	overflow: hidden;
+	box-sizing: border-box;
+	padding: 0 20%;
+}
+.six .inner-box{
+	width:50%;
+	height:100%;
+	display: inline-flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+}
+/* 点面位置 */
+.front{
+	transform:translateZ(calc(var(--face-size-)/2));  
+}
+.front::before{
+	content: '';
+	width:100%;
+	height:100%;
+	background-color: #666;
+	opacity: 0.5;
+	position: absolute;
+	transform: translateZ(-10px);
+}
+.back{
+	transform:translateZ(calc(var(--face-size-)/-2)) rotateZ(180deg);
+}
+.back::before{
+	content: '';
+	width:100%;
+	height:100%;
+	background-color: #666;
+	opacity: 0.5;
+	position: absolute;
+	transform: translateZ(10px);
+}
+.top{
+	 transform:translateY(calc(var(--face-size-)/-2)) rotateX(90deg);
+}
+.bottom{
+	transform:translateY(calc(var(--face-size-)/2)) rotateX(-90deg);
+}
+.left{
+	transform:translateX(calc(var(--face-size-)/-2)) rotateY(90deg);
+}
+.right{
+	transform:translateX(calc(var(--face-size-)/2)) rotateY(-90deg);
+	}
+/* 转动动画 */
+.middle-box{
+	transform: rotateX(35deg) rotateY(45deg);
+}
+.up-down-move{
+	animation: up-down-ani 3s linear infinite forwards;
+}
+.left-right-move{
+	animation: left-right-ani 3s linear infinite forwards;
+}
+.z-move{
+	animation: z-ani 10s linear infinite forwards;
+}
+@keyframes up-down-ani{
+	0%{
+		transform:rotateX(0deg);
+	}
+	100%{
+		transform:rotateX(360deg);
+	}
+}
+@keyframes left-right-ani{
+	0%{
+		transform:rotateY(0deg);
+	}
+	100%{
+		transform:rotateY(360deg);
+	}
+}
+@keyframes z-ani{
+	0%{
+		transform:rotateZ(0deg);
+	}
+	100%{
+		transform:rotateZ(360deg);
+	}
+}
