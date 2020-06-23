@@ -1,0 +1,36 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+:root {
+	font-size: calc(100vw/750);
+}
+
+html,
+body {
+	height: 100%;
+}
+
+#app {
+	width: 750rem;
+	height: 100vh;
+	overflow: hidden;
+	background: transparent;
+}
+
+.box {
+	width: 800rem;
+	height: 100vh;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch;
+}
+
+.local-svg {
+	--svg-width-: 750rem;
+	width: var(--svg-width-);
+	height: calc(var(--svg-width-)*1080/1920);
+	background: whitesmoke;
+	user-select: none;
+}
