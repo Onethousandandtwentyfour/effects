@@ -23,7 +23,7 @@
   >> *  [旋转骰子](https://onethousandandtwentyfour.github.io/effects/unit2/%e9%aa%b0%e5%ad%90/)
   
   > *__svg滤镜-1__*
-  >> * 
+  >> * [svg](https://onethousandandtwentyfour.github.io/effects/unit2/svg%e6%bb%a4%e9%95%9c-1)
   
   > *__让图片中的水动起来__*
   >> *
