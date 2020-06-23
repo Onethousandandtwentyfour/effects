@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>svg滤镜-1</title>
+		<link type="text/css" rel="stylesheet" href="./svg-1.css" />
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<!-- https://webplatform.github.io/docs/svg/elements/filter/ -->
+	</head>
+	<body>
+		<div id="app">
+			<div class="box" v-if="pageIndex==1">
+				<svg class="local-svg" viewBox="0 0 1920 1080">
+					<defs>
+						<!-- 平移滤镜 -->
+						<filter id="fe-offset" primitiveUnits="userSpaceOnUse">
+							<feOffset in="SourceGraphic" :dx="offset.length" :dy="offset.length" />
+						</filter>
+						<!-- 高斯模糊滤镜 -->
+						<filter id="fe-gaussian-blur" primitiveUnits="userSpaceOnUse">
+							<feGaussianBlur in="SourceGraphic" :stdDeviation="gaussianBlur.stdDeviation" ref="gaussianblur" />
+						</filter>
+						<!-- 图像滤镜 -->
+						<filter id="fe-image" primitiveUnits="objectBoundingBox">
+							<feImage xlink:href="./img/before.jpg" width="1" height="1" x="0" y="0" preserveAspectRatio="xMidYMid meet" />
+						</filter>
+						<!-- 填充滤镜 -->
+						<filter id="fe-flood" primitiveUnits="objectBoundingBox">
+							<feFlood :flood-color="color.after" flood-opacity="0.3" x="-.25" y=".25" width="1.5" height=".5" />
+						</filter>
+						<!-- 平铺滤镜 -->
+						<filter id="fe-tile" primitiveUnits="objectBoundingBox">
+							<feImage xlink:href="./img/after.jpg" width=".25" height=".5" x="0" y="0" preserveAspectRatio="xMinYMin meet"
+							 result="image" />
+							<feTile in="image" x="0" y="0" width="1" height="1" />
+						</filter>
+						<!-- 混合滤镜 -->
+						<filter id="fe-blend-normal" primitiveUnits="objectBoundingBox">
+							<feFlood flood-color="green" flood-opacity="1" x="-.25" y="0" width="1.5" height="1" result="flood" />
+							<feBlend in="SourceGraphic" in2="flood" mode="normal" />
+						</filter>
+						<filter id="fe-blend-multiply" primitiveUnits="objectBoundingBox">
+							<feFlood flood-color="green" flood-opacity="1" x="-.25" y="0" width="1.5" height="1" result="flood" />
+							<feBlend in="SourceGraphic" in2="flood" mode="multiply" />
+						</filter>
+						<filter id="fe-blend-screen" primitiveUnits="objectBoundingBox">
+							<feFlood flood-color="green" flood-opacity="1" x="-.25" y="0" width="1.5" height="1" result="flood" />
+							<feBlend in="SourceGraphic" in2="flood" mode="screen" />
+						</filter>
+						<filter id="fe-blend-darken" primitiveUnits="objectBoundingBox">
+							<feFlood flood-color="green" flood-opacity="1" x="-.25" y="0" width="1.5" height="1" result="flood" />
+							<feBlend in="SourceGraphic" in2="flood" mode="darken" />
+						</filter>
+						<filter id="fe-blend-lighten" primitiveUnits="objectBoundingBox">
+							<feFlood flood-color="green" flood-opacity="1" x="-.25" y="0" width="1.5" height="1" result="flood" />
+							<feBlend in="SourceGraphic" in2="flood" mode="lighten" />
+						</filter>
+						<!-- 合并滤镜 -->
+						<filter id="fe-merge" primitiveUnits="userSpaceOnUse">
+							<feGaussianBlur in="SourceGraphic" stdDeviation="4" result="gaussianblur" />
+							<feOffset in="gaussianblur" dx="10" dy="10" result="offset" />
+							<feMerge>
+								<feMergeNode in="offset" />
+								<feMergeNode in="SourceGraphic" />
+							</feMerge>
+						</filter>
+						<!-- 组合滤镜 -->
+						<filter id="fe-composite-over">
+							<feComposite in="SourceGraphic" in2="BackgroundImage" operator="over" result="comp" />
+						</filter>
+						<filter id="fe-composite-in">
+							<feComposite in="SourceGraphic" in2="BackgroundImage" operator="in" result="comp" />
+						</filter>
+						<filter id="fe-composite-out">
+							<feComposite in="SourceGraphic" in2="BackgroundImage" operator="out" result="comp" />
+						</filter>
+						<filter id="fe-composite-atop">
+							<feComposite in="SourceGraphic" in2="BackgroundImage" operator="atop" result="comp" />
+						</filter>
+						<filter id="fe-composite-xor">
+							<feComposite in="SourceGraphic" in2="BackgroundImage" operator="xor" result="comp" />
+						</filter>
+						<filter id="fe-composite-arithmetic">
+							<feComposite in="SourceGraphic" in2="BackgroundImage" operator="arithmetic" k1=".5" k2=".5" k3=".5" k4=".5"
+							 result="comp" />
+						</filter>
+						<!-- 颜色矩阵滤镜 -->
+						<filter id="fe-color-matric-red">
+							<feColorMatrix in="SourceGraphic" type="matrix" values="
+							            1 1 1 1 0
+							            0 0 0 0 0
+							            0 0 0 0 0
+							            0 0 0 1 0" />
+						</filter>
+						<g>
+							<path id="BlueA" d="M 0 0 L 100 0 L 100 100 z" fill="blue" />
+							<path id="RedA" d="M 0 0 L 0 100 L 100 0 z" fill="red" />
+							<path id="BlueB" d="M 0 0 L 100 0 L 100 100 z" fill="blueviolet" fill-opacity=".5" />
+							<path id="RedB" d="M 0 0 L 0 100 L 100 0 z" fill="darkred" fill-opacity=".5" />
+						</g>
+						<g id="circle">
+							<circle cx="30" cy="30" r="20" fill="blue" fill-opacity="0.5" />
+							<circle cx="20" cy="50" r="20" fill="green" fill-opacity="0.5" />
+							<circle cx="40" cy="50" r="20" fill="red" fill-opacity="0.5" />
+						</g>
+
+						<image id="imgs" xlink:href="./img/after.jpg" height="120" preserveAspectRatio="xMinYMin meet" />
+					</defs>
+					<!-- 示例 ----------------------------------------------------------------------------------------------------------------------->
+					<!-- 平移滤镜 -->
+					<text x="100" y="100" font-size="50" font-weight="bold" :fill="color.before">1.feOffset</text>
+					<text x="100" y="100" font-size="50" font-weight="bold" :fill="color.after" filter="url(#fe-offset)">feOffset</text>
+					<!-- 高斯模糊滤镜 -->
+					<text x="100" y="200" font-size="50" font-weight="bold" :fill="color.before">2.feGaussianBlur</text>
+					<text x="100" y="250" font-size="50" font-weight="bold" filter="url(#fe-gaussian-blur)">feGaussianBlur</text>
+					<!-- 图像滤镜 -->
+					<text x="100" y="330" font-size="50" font-weight="bold" :fill="color.before">3.feImage</text>
+					<rect x="100" y="350" width="300" height="100" :fill="color.before" />
+					<rect x="100" y="350" width="300" height="100" filter="url(#fe-image)" />
+					<!-- 填充滤镜 -->
+					<text x="100" y="530" font-size="50" font-weight="bold" :fill="color.before">4.feFlood</text>
+					<rect x="100" y="550" width="300" height="100" :fill="color.before" />
+					<rect x="100" y="550" width="300" height="100" :fill="color.before" filter="url(#fe-flood)" />
+					<!-- 平铺滤镜 -->
+					<text x="100" y="730" font-size="50" font-weight="bold" :fill="color.before">5.feTile</text>
+					<rect x="100" y="750" width="300" height="100" filter="url(#fe-tile)" />
+					<!-- 混合滤镜 -->
+					<!-- normal -->
+					<text x="100" y="930" font-size="50" font-weight="bold" :fill="color.before">6.feBlend</text>
+					<use xlink:href="#imgs" x="100" y="950" :filter="imgFFliterComputed" ref="imgs_ref" />
+					<text x="350" y="930" font-size="20" font-weight="bold" :fill="color.before">{{blend.modes[blend.index]}}</text>
+					<!-- 合并滤镜 -->
+					<text x="600" y="100" font-size="50" font-weight="bold" fill="teal">7.feMerge</text>
+					<text x="600" y="100" font-size="50" font-weight="bold" fill="teal" filter="url(#fe-merge)">7.feMerge</text>
+					<!-- 组合滤镜 -->
+					<text x="600" y="200" font-size="50" font-weight="bold" fill="teal">8.feComposite</text>
+
+					<g transform="translate(600,260)">
+						<use xlink:href="#BlueA" />
+						<use xlink:href="#RedA" filter="url(#fe-composite-over)" />
+						<text x="50" y="130" width="100" text-anchor="middle" font-size="30">over</text>
+					</g>
+					<g transform="translate(750,260)">
+						<use xlink:href="#BlueA" />
+						<use xlink:href="#RedA" filter="url(#fe-composite-in)" />
+						<text x="50" y="130" width="100" text-anchor="middle" font-size="30">in</text>
+					</g>
+					<g transform="translate(900,260)">
+						<use xlink:href="#BlueA" />
+						<use xlink:href="#RedA" filter="url(#fe-composite-out)" />
+						<text x="50" y="130" width="100" text-anchor="middle" font-size="30">out</text>
+					</g>
+					<g transform="translate(600,410)">
+						<use xlink:href="#BlueA" />
+						<use xlink:href="#RedA" filter="url(#fe-composite-atop)" />
+						<text x="50" y="130" width="100" text-anchor="middle" font-size="30">atop</text>
+					</g>
+					<g transform="translate(750,410)">
+						<use xlink:href="#BlueA" />
+						<use xlink:href="#RedA" filter="url(#fe-composite-xor)" />
+						<text x="50" y="130" width="100" text-anchor="middle" font-size="30">xor</text>
+					</g>
+					<g transform="translate(900,410)">
+						<use xlink:href="#BlueA" />
+						<use xlink:href="#RedA" filter="url(#fe-composite-arithmetic)" />
+						<text x="50" y="130" width="100" text-anchor="middle" font-size="30">arithmetic</text>
+					</g>
+					<!-- 颜色矩阵滤镜 -->
+					<text x="600" y="630" width="100" font-size="50" font-weight="bold" fill="teal">8.feColorMatrix</text>
+					<use xlink:href="#circle" x="600" y="650" />
+					<text x="630" y="780" width="100" text-anchor="middle" font-size="30">normal</text>
+				</svg>
+			</div>
+			<div class="box" v-if="pageIndex==2">
+				svg-2
+			</div>
+		</div>
+
+	</body>
+	<script type="text/javascript">
+		var app = new Vue({
+			el: "#app",
+			data: {
+				pageIndex: 1,
+				fps: 10,
+				lastDate: 0,
+				color: {
+					before: 'cyan',
+					after: 'rgba(0,0,0,0.1)',
+				},
+				offset: {
+					num: 1,
+					length: 0,
+				},
+				gaussianBlur: {
+					num: 1,
+					stdDeviation: 1,
+				},
+				gaussianBlurObj: null,
+				imgObj: null,
+				blend: {
+					modes: ['normal', 'multiply', 'screen', 'darken', 'lighten'],
+					index: 0,
+				}
+			},
+			mounted() {
+				const url=window.location.href;
+				if(url&&url.indexOf('?')>-1){
+					this.pageIndex=parseInt(url.trim().split("?")[1]);
+				}
+				this.initStdDeviationNode();
+				this.requestAnimationFrameFun();
+			},
+			computed: {
+				imgFFliterComputed() {
+					return `url(#fe-blend-${this.blend.modes[this.blend.index]})`;
+				},
+			},
+			methods: {
+				requestAnimationFrameFun() {
+					let nowDate = Date.now();
+					if ((nowDate - this.lastDate) < (1000 / this.fps)) {
+						requestAnimationFrame(this.requestAnimationFrameFun);
+						return;
+					}
+					this.lastDate = nowDate;
+					this.offsetMoveMethod();
+					this.gaussianBlurMoveMethod();
+					requestAnimationFrame(this.requestAnimationFrameFun);
+				},
+				initStdDeviationNode() {
+					this.gaussianBlurObj = this.$refs.gaussianblur;
+					this.imgObj = this.$refs.imgs_ref;
+					if (this.imgObj) {
+						this.imgObj.addEventListener('click', (ev) => {
+							if (this.blend.index >= 4) {
+								this.blend.index = 0;
+								return;
+							}
+							this.blend.index++;
+						});
+					}
+				},
+				offsetMoveMethod() {
+					this.offset.length += this.offset.num;
+					if (this.offset.length == 20) {
+						this.offset.num = -1;
+					} else
+					if (this.offset.length == -20) {
+						this.offset.num = 1;
+					}
+				},
+				gaussianBlurMoveMethod() {
+					this.gaussianBlur.stdDeviation += this.gaussianBlur.num;
+					if (this.gaussianBlur.stdDeviation == 10) {
+						this.gaussianBlur.num = -1;
+					} else if (this.gaussianBlur.stdDeviation == 1) {
+						this.gaussianBlur.num = 1;
+					}
+					if (this.gaussianBlurObj) {
+						this.gaussianBlurObj.setAttribute('stdDeviation', this.gaussianBlur.stdDeviation);
+					}
+				},
+
+			},
+		});
+	</script>
+</html>
