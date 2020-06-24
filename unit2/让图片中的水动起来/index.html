@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>svg-柏林噪声</title>
+		<link type='text/css' rel="stylesheet" href="./index.css" />
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="app" class="box">
+			<svg width="0px" height="0px">
+				<defs>
+					<filter id="fe-turbulence-turbulence" primitiveUnits="objectBoundingBox" width="100%" height="100%" x="0" y="0">
+						<feTurbulence type="turbulence" baseFrequency="0.1" numOctaves="1" seed="0" ref="turbulence" />
+					</filter>
+					<filter id="fe-turbulence-fractalNoise" primitiveUnits="objectBoundingBox" width="100%" height="100%" x="0" y="0">
+						<feTurbulence type="fractalNoise" baseFrequency="0.1" numOctaves="1" seed="0" ref="fractal_noise" />
+					</filter>
+				</defs>
+			</svg>
+			<div class="fe-box left-top-item">
+				<p class="title">turbulence</p>
+				<p class="title">fractalNoise</p>
+				<div class="content"></div>
+				<div class="content content-fractal-noise"></div>
+			</div>
+			<div class="fe-box right-top-item">
+				<p class="title feDisplacementMap-title">feDisplacementMap</p>
+				<div class="content-fe-displacement-map">feDisplacementMap</div>
+				<svg viewBox="0 0 300 180">
+					<defs>
+						<filter id="fe-displacement-map-turbulence">
+							<feTurbulence type="turbulence" baseFrequency="0.1" numOctaves="50" seed="0" result="turbulence" />
+							<feDisplacementMap in2="turbulence" in="SourceGraphic" :scale="publicNum" xChannelSelector="R" yChannelSelector="G" />
+						</filter>
+					</defs>
+					<text x="20" y="80" font-size="20" font-weight="bold" fill="red" filter="url(#fe-displacement-map-turbulence)">feDisplacementMap</text>
+				</svg>
+			</div>
+			<div class="fe-box left-bottom-item">
+				<div class="water-box">
+					<img src="./img/timg.jpg" class="water-img" />
+				</div>
+				<svg width="0px" height="0px">
+					<defs>
+						<filter id="bolinzaosheng" width="100%" height="100%" x="0" y="0">
+							<feTurbulence type="turbulence" baseFrequency="0.0143677 0.325294" numOctaves="3" result="turbulence">
+								<animate attributeName="baseFrequency" dur="60s" calcMode="linear" values="0.01 0.5;0.015 0.3;0.01 0.5"
+								 keyTimes="0;0.5;1" repeatCount="indefinite"></animate>
+							</feTurbulence>
+							<feDisplacementMap xChannelSelector="R" yChannelSelector="G" in="SourceGraphic" in2="turbulence" scale="40"></feDisplacementMap>
+						</filter>
+					</defs>
+				</svg>
+			</div>
+			<div class="fe-box right-bottom-item"></div>
+		</div>
+
+	</body>
+	<script>
+		var app = new Vue({
+			el: '#app',
+			data: {
+				publicNum: 1,
+				publicBaseNum: 0.1,
+				fps: 10,
+				lastDate: 0,
+				num: 1,
+				turbulence: null,
+				fractalNoise: null,
+			},
+			mounted() {
+				this.turbulence = this.$refs.turbulence;
+				this.fractalNoise = this.$refs.fractal_noise;
+				this.requestAnimationFrameFun();
+			},
+			methods: {
+				requestAnimationFrameFun() {
+					let nowDate = Date.now();
+					if ((nowDate - this.lastDate) < (1000 / this.fps)) {
+						requestAnimationFrame(this.requestAnimationFrameFun);
+						return;
+					}
+					this.lastDate = nowDate;
+					this.publicNum += this.num;
+					this.publicBaseNum = Math.random();
+					if (this.publicNum >= 40) {
+						this.num = -1;
+					} else if (this.publicNum <= 1) {
+						this.num = 1;
+					}
+					if (this.turbulence) {
+						// this.turbulence.setAttribute('numOctaves', this.publicNum);
+						this.turbulence.setAttribute('baseFrequency', this.publicBaseNum);
+					}
+					if (this.fractalNoise) {
+						// this.fractalNoise.setAttribute('numOctaves', this.publicNum);
+						this.fractalNoise.setAttribute('baseFrequency', this.publicBaseNum);
+					}
+					requestAnimationFrame(this.requestAnimationFrameFun);
+				},
+			},
+		});
+	</script>
+</html>
