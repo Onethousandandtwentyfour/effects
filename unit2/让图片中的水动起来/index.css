@@ -1,0 +1,122 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+:root {
+	font-size: calc(100vw/750);
+}
+
+html,
+body {
+	height: 100%;
+}
+
+.box {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	overflow: hidden;
+	background: whitesmoke;
+}
+
+.fe-box {
+	width: 375rem;
+	height: 50%;
+	border-radius: 4rem;
+	box-sizing: border-box;
+	--trans-x-: calc(75rem/3);
+}
+
+.left-top-item {
+	float: left;
+}
+
+.right-top-item {
+	float: right;
+}
+
+.left-bottom-item {
+	float: left;
+}
+
+.right-bottom-item {
+	float: right;
+}
+
+.title {
+	width: 150rem;
+	height: 20rem;
+	font-size: 20rem;
+	line-height: 20rem;
+	text-align: center;
+	transform: translateX(var(--trans-x-));
+	display: inline-block;
+}
+
+.content {
+	width: 150rem;
+	height: calc(100% - 20rem - 5rem);
+	transform: translateX(var(--trans-x-));
+	background: white;
+	filter: url(#fe-turbulence-turbulence);
+	display: inline-block;
+}
+
+.content-fractal-noise {
+	filter: url(#fe-turbulence-fractalNoise);
+}
+
+.feDisplacementMap-title {
+	width: 375rem;
+}
+
+.content-fe-displacement-map {
+	width: 300rem;
+	height: 30rem;
+	line-height: 30rem;
+	font-size: 30rem;
+	color: orange;
+	text-align: center;
+	transform: translateX(var(--trans-x-));
+	filter: url(#fe-displacement-map-turbulence);
+}
+
+.right-top-item svg {
+	width: 375rem;
+	height: calc(375rem*180/300);
+	background: transparent;
+}
+.water-box{
+	width: 275rem;
+	transform: translateX(50rem);
+	position: relative;
+}
+.water-box .water-img {
+	width:100%;
+}
+
+.water-box::before {
+	content: '';
+	width: 100%;
+	height: 58%;
+	position: absolute;
+	left: 0;
+	bottom:2%;
+	overflow: hidden;
+	background: url(./img/timg.jpg) center bottom/100% auto no-repeat;
+	filter:url(#bolinzaosheng);
+}
+.water-box::after{
+	content: '';
+	width:calc(100% - 5rem);
+	height: calc(100% - 5rem);
+	box-sizing: content-box;
+	position: absolute;
+	left:2.5rem;
+	top:2.5rem;
+	box-shadow: 0 0 20px black inset, 1px 1px 10px black, 2px 2px 20px black;
+	
+} 
