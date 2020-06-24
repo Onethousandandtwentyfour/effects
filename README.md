@@ -26,10 +26,10 @@
   >> * [svg](https://onethousandandtwentyfour.github.io/effects/unit2/svg%e6%bb%a4%e9%95%9c-1)
   
   > *__让图片中的水动起来__*
-  >> *
+  >> *  [svg](https://onethousandandtwentyfour.github.io/effects/unit2/svg%e6%bb%a4%e9%95%9c-1)
   
   > *__canvas绘画基础__*
-  >> * [canvas](https://onethousandandtwentyfour.github.io/effects/unit2/canvas%e7%bb%98%e7%94%bb%e5%9f%ba%e7%a1%80)
+  >> * [canvas](https://onethousandandtwentyfour.github.io/effects/unit2/%e8%ae%a9%e5%9b%be%e7%89%87%e4%b8%ad%e7%9a%84%e6%b0%b4%e5%8a%a8%e8%b5%b7%e6%9d%a5)
   
 #### Unit3
   > ...
