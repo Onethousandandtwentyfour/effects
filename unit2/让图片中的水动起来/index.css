@@ -104,7 +104,7 @@ body {
 	height: 58%;
 	position: absolute;
 	left: 0;
-	bottom:2%;
+	bottom:0.1%;
 	overflow: hidden;
 	background: url(./img/timg.jpg) center bottom/100% auto no-repeat;
 	filter:url(#bolinzaosheng);
