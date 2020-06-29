@@ -20,7 +20,7 @@
   
 #### Unit2
   > *__旋转的骰子__*
-  > *  [旋转骰子](https://onethousandandtwentyfour.github.io/effects/unit2/%e9%aa%b0%e5%ad%90/)
+  > * [旋转骰子](https://onethousandandtwentyfour.github.io/effects/unit2/%e9%aa%b0%e5%ad%90/)
   
   > *__svg滤镜-1__*
   > * [svg](https://onethousandandtwentyfour.github.io/effects/unit2/svg%e6%bb%a4%e9%95%9c-1)
@@ -36,7 +36,7 @@
   
 #### Unit4
   > *__翻折的文字__*
-  >> * [div+css](https://onethousandandtwentyfour.github.io/effects/unit4/%e7%bf%bb%e6%8a%98%e7%9a%84%e6%96%87%e5%ad%97/)
+  > * [div+css](https://onethousandandtwentyfour.github.io/effects/unit4/%e7%bf%bb%e6%8a%98%e7%9a%84%e6%96%87%e5%ad%97/)
   
 #### Extend
 
