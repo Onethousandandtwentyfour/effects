@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>霓虹灯1</title>
+		<style>
+			*{
+				margin: 0;
+				padding:0;
+			}
+			:root{
+				font-size: calc(100vw/750);
+			}
+			html,body{
+				height:100%;
+			}
+			.box{
+				width:100vw;
+				height:100vh;
+				position: absolute;
+				left:0;
+				top:0;
+				background-color: black;
+			}
+			.checkbox-input{
+				display: none;
+			}
+			/* 基础样式 */
+			.checkbox-label{
+				font-size: 1rem;
+				display: block;
+				width:375rem;
+				height:50rem;
+				box-sizing: border-box;
+				border:2rem solid silver;
+				border-radius: 25rem;
+				position: absolute;
+				left:187.5rem;
+				bottom:80rem;
+				overflow: hidden;
+				box-shadow: 1rem 1rem 2rem #211 inset,2rem 2rem 2rem #322 inset,3rem 3rem 2rem #544 inset;
+			}
+			.checkbox-label:before{
+				content: '';
+				width:42rem;
+				height:42rem;
+				border-radius: 50%;
+				position: absolute;
+				left:2rem;
+				top:2rem;
+				box-shadow:1rem 1rem 2rem #211,2rem 2rem 2rem #322,3rem 3rem 2rem #544;
+			}
+			/* 背景条纹 */
+			.checkbox-label{
+				transition: background-position 0.5s ease-out;
+				background:repeating-linear-gradient(45deg,rgba(255,255,255,0.3) 0%,rgba(255,255,255,0.3) 25%,transparent 25%,transparent 50%) center/5px 5px,
+							linear-gradient(90deg,green 50%,black 50%) -371em/200% 100% no-repeat;
+			}
+			/* 按钮金属质感 */
+			.checkbox-label:before{
+				transition: transform 0.5s ease-out;
+				background-color: silver;
+				/* 径向渐变  椭圆 长边是盒子width的8%  短边是盒子height的50%  圆心在width的50%,height的0% red占渐变的0% 其他占100% */
+				background-image:radial-gradient(ellipse 8% 50% at 50% 0%,rgba(255,255,255,0.7) 0%,rgba(0,0,0,0) 100%),
+								radial-gradient(ellipse 12% 50% at 50% 100%,rgba(255,255,255,0.7) 0%,rgba(0,0,0,0) 100%),
+								radial-gradient(ellipse 50% 7% at 0% 50%,rgba(255,255,255,0.7) 0%,rgba(0,0,0,0) 100%),
+								radial-gradient(ellipse 50% 5% at 100% 50%,rgba(255,255,255,0.7) 0%,rgba(0,0,0,0) 100%),
+								repeating-radial-gradient(100% 100% at 50% 50%,silver,rgba(0,0,0,0.1) 7%,rgba(0,0,0,0.15) 8.5%),
+								radial-gradient(circle at center,rgba(255,255,255,0.7) 5%,rgba(255,255,255,0.4) 30%,rgba(255,255,255,0) 100%);								
+			}
+			
+			/* input checkbox 选中 */
+			input:checked~.checkbox-label{
+				background-position:0em;
+			}
+			input:checked+.checkbox-label:before{
+				transform:translateX(325em) rotateZ(-45deg);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<input id="checkbox-input" class="checkbox-input" type="checkbox" />
+			<label class="checkbox-label" for="checkbox-input"></label>
+	</body>
+</html>
