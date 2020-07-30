@@ -24,7 +24,7 @@
 | **霓虹灯1**                  | [div+css](https://onethousandandtwentyfour.github.io/effects/unit3/%e9%9c%93%e8%99%b9%e7%81%af/index.html)     |
 | **svg水波背景**              |      |
 | **铅笔粉笔浮雕效果**         |      |
-| **canvas像素操作和电视噪声** |      |
+| **canvas像素操作和电视噪声** |  [canvas](https://onethousandandtwentyfour.github.io/effects/unit3/canvas%e5%99%aa%e5%a3%b0/index.html)    |
 
 ***
 
