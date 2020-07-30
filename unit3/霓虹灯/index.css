@@ -1,0 +1,166 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+:root {
+	font-size: calc(100vw/750);
+}
+
+html,
+body {
+	height: 100%;
+}
+
+.box {
+	width: 100vw;
+	height: 100vh;
+	position: absolute;
+	left: 0;
+	top: 0;
+	background-color: black;
+}
+
+.checkbox-input {
+	display: none;
+}
+
+/* 基础样式 */
+.checkbox-label {
+	font-size: 1rem;
+	display: block;
+	width: 375rem;
+	height: 50rem;
+	box-sizing: border-box;
+	border: 2rem solid silver;
+	border-radius: 25rem;
+	position: absolute;
+	left: 187.5rem;
+	bottom: 80rem;
+	overflow: hidden;
+	box-shadow: 1rem 1rem 2rem #211 inset, 2rem 2rem 2rem #322 inset, 3rem 3rem 2rem #544 inset;
+}
+
+.checkbox-label:before {
+	content: '';
+	width: 42rem;
+	height: 42rem;
+	border-radius: 50%;
+	position: absolute;
+	left: 2rem;
+	top: 2rem;
+	box-shadow: 1rem 1rem 2rem #211, 2rem 2rem 2rem #322, 3rem 3rem 2rem #544;
+}
+
+/* 背景条纹 */
+.checkbox-label {
+	transition: background-position 0.5s ease-out;
+	background: repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.3) 25%, transparent 25%, transparent 50%) center/5px 5px,
+		linear-gradient(90deg, green 50%, black 50%) -371em/200% 100% no-repeat;
+}
+
+/* 按钮金属质感 */
+.checkbox-label:before {
+	transition: transform 0.5s ease-out;
+	background-color: silver;
+	/* 径向渐变  椭圆 长边是盒子width的8%  短边是盒子height的50%  圆心在width的50%,height的0% red占渐变的0% 其他占100% */
+	background-image: radial-gradient(ellipse 8% 50% at 50% 0%, rgba(255, 255, 255, 0.7) 0%, rgba(0, 0, 0, 0) 100%),
+		radial-gradient(ellipse 12% 50% at 50% 100%, rgba(255, 255, 255, 0.7) 0%, rgba(0, 0, 0, 0) 100%),
+		radial-gradient(ellipse 50% 7% at 0% 50%, rgba(255, 255, 255, 0.7) 0%, rgba(0, 0, 0, 0) 100%),
+		radial-gradient(ellipse 50% 5% at 100% 50%, rgba(255, 255, 255, 0.7) 0%, rgba(0, 0, 0, 0) 100%),
+		repeating-radial-gradient(100% 100% at 50% 50%, silver, rgba(0, 0, 0, 0.1) 7%, rgba(0, 0, 0, 0.15) 8.5%),
+		radial-gradient(circle at center, rgba(255, 255, 255, 0.7) 5%, rgba(255, 255, 255, 0.4) 30%, rgba(255, 255, 255, 0) 100%);
+}
+
+/* input checkbox 选中 */
+input:checked~.checkbox-label {
+	background-position: 0em;
+}
+
+input:checked+.checkbox-label:before {
+	transform: translateX(325em) rotateZ(-45deg);
+}
+
+/* 霓虹灯 */
+@font-face {
+	font-family: 'sss';
+	src: url(./sss.ttf);
+}
+
+@font-face {
+	font-family: 'pinyin';
+	src: url(./pinyin.ttf);
+}
+
+
+.light{
+	display: block;
+	width:375rem;
+	height:20rem;
+	line-height: 20rem;
+	font-size: 20rem;
+	text-align: center;
+	color:whitesmoke;
+	position: absolute;
+	top:calc((100vh - 50rem -80rem - 20rem)/2);
+	user-select: none;
+	animation: hide-left-light-ani 3s 1 forwards;
+}
+.left-light{
+	left:0;
+	font-family: 'sss';
+}
+.right-light{
+	right:0;
+	font-family: 'pinyin';
+}
+
+input:checked~.left-light{
+	animation: show-left-light-ani 3s 1 forwards;
+}
+
+@keyframes show-left-light-ani{
+	0%{
+		color:rgba(255,255,255,1);
+		text-shadow: '';
+	}
+	80%{
+		color:orange;
+		text-shadow: 0 0 4rem white,
+					 0 0 8rem white,
+					 0 0 12rem white,
+					 0 0 16rem white,
+					 0 0 20rem white;
+	}
+	100%{
+		color:yellow;
+		text-shadow: 0 0 2rem white,
+					 0 0 6rem white,
+					 0 0 10rem white,
+					 0 0 14rem white,
+					 0 0 18rem white;
+	}
+}
+
+@keyframes hide-left-light-ani{
+	0%{
+		color:yellow;
+		text-shadow: 0 0 2rem white,
+					 0 0 6rem white,
+					 0 0 10rem white,
+					 0 0 14rem white,
+					 0 0 18rem white;
+	}
+	20%{
+		color:orange;
+		text-shadow: 0 0 4rem white,
+					 0 0 8rem white,
+					 0 0 12rem white,
+					 0 0 16rem white,
+					 0 0 20rem white;
+	}
+	100%{
+		color:rgba(255,255,255,1);
+		text-shadow: '';
+	}
+}
