@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 		<title>铅笔浮雕效果</title>
 		<link rel="stylesheet" type="text/css" href="index.css" />
 	</head>
@@ -14,63 +14,63 @@
 				<img src="./imgs/abc.jpg" class="left-top-img" :style="topImgFilter" />
 				<div class="row">
 					<div class="row-text left-row-text">Blur/模糊度</div>
-					<input type="range" class="row-input" defaultValue="0" min="0" max="10" step="0.1" v-model:value="blur"/>
+					<input type="range" class="row-input" defaultValue="0" min="0" max="10" step="0.1" v-model:value="blur" />
 					<div class="row-text right-row-text">{{blur}}px</div>
 				</div>
 				<div class="row">
 					<div class="row-text left-row-text">Grayscale/降低饱和度</div>
-					<input type="range" class="row-input" defaultValue="0" min="0" max="1" step="0.01" v-model:value="grayscale"/>
+					<input type="range" class="row-input" defaultValue="0" min="0" max="1" step="0.01" v-model:value="grayscale" />
 					<div class="row-text right-row-text">{{grayscale}}</div>
 				</div>
 				<div class="row">
 					<div class="row-text left-row-text">dropShadow/投影</div>
-					<input type="range" class="row-input" defaultValue="0" min="0" max="50"  v-model:value="dropShadow"/>
+					<input type="range" class="row-input" defaultValue="0" min="0" max="50" v-model:value="dropShadow" />
 					<div class="row-text right-row-text">{{dropShadow}}</div>
 				</div>
 				<div class="row">
 					<div class="row-text left-row-text">sepia/褐色效果</div>
-					<input type="range" class="row-input" defaultValue="0" min="0" max="1" step="0.01"  v-model:value="sepia"/>
+					<input type="range" class="row-input" defaultValue="0" min="0" max="1" step="0.01" v-model:value="sepia" />
 					<div class="row-text right-row-text">{{sepia}}</div>
 				</div>
 				<div class="row">
 					<div class="row-text left-row-text">brightness/亮度</div>
-					<input type="range" class="row-input" defaultValue="0" min="0" max="2" step="0.01" v-model:value="brightness"/>
+					<input type="range" class="row-input" defaultValue="0" min="0" max="2" step="0.01" v-model:value="brightness" />
 					<div class="row-text right-row-text">{{brightness}}</div>
 				</div>
 				<div class="row">
 					<div class="row-text left-row-text">contrast/对比度</div>
-					<input type="range" class="row-input" defaultValue="0" min="0" max="1" step="0.01" v-model:value="contrast"/>
+					<input type="range" class="row-input" defaultValue="0" min="0" max="1" step="0.01" v-model:value="contrast" />
 					<div class="row-text right-row-text">{{contrast}}</div>
 				</div>
 				<div class="row">
 					<div class="row-text left-row-text">hueRotate/旋转色相</div>
-					<input type="range" class="row-input" defaultValue="0" min="0" max="360" step="1" v-model:value="hueRotate"/>
+					<input type="range" class="row-input" defaultValue="0" min="0" max="360" step="1" v-model:value="hueRotate" />
 					<div class="row-text right-row-text">{{hueRotate}}</div>
 				</div>
 				<div class="row">
 					<div class="row-text left-row-text">invert/反相</div>
-					<input type="range" class="row-input" defaultValue="0" min="0" max="1" step="1" v-model:value="invert"/>
+					<input type="range" class="row-input" defaultValue="0" min="0" max="1" step="1" v-model:value="invert" />
 					<div class="row-text right-row-text">{{invert}}</div>
 				</div>
 				<div class="row">
 					<div class="row-text left-row-text">saturate/饱和度</div>
-					<input type="range" class="row-input" defaultValue="0" min="0" max="255" step="0.01" v-model:value="saturate"/>
+					<input type="range" class="row-input" defaultValue="0" min="0" max="255" step="0.01" v-model:value="saturate" />
 					<div class="row-text right-row-text">{{saturate}}</div>
 				</div>
 				<div class="row">
 					<div class="row-text left-row-text">opacity/透明度</div>
-					<input type="range" class="row-input" defaultValue="0" min="0" max="1" step="0.01" v-model:value="opacity"/>
+					<input type="range" class="row-input" defaultValue="0" min="0" max="1" step="0.01" v-model:value="opacity" />
 					<div class="row-text right-row-text">{{opacity}}</div>
 				</div>
 			</div>
-			
-			
+
+
 			<div class="column-box center-top-sm-img">
 				<img src="./imgs/abc.jpg" class="left-top-img center-top-img" />
 				<div class="center-top-sm-img-text">水墨画</div>
 			</div>
-			
-			
+
+
 			<div class="column-box third-column-box">
 				<div class="third-column-first-box" :style="{'background-blend-mode':backgroundBlendModeValue}">
 					<!-- <img src="./imgs/abc.jpg" class="third-left-top-img" /> -->
@@ -96,12 +96,19 @@
 					</select>
 				</div>
 			</div>
-			
+
 			<div class="column-box four-column-box">
 				<div class="circle four-circle"></div>
+				<div class="inner-circle-box">
+					<div class="new-circle-box"></div>
+				</div>
 			</div>
-			
-				
+			<!-- <div class="column-box">
+				<div class="new-circle" :style="conicColors"></div>
+			</div> -->
+		</div>
+
+
 		</div>
 		<script type="text/javascript" src="index.js"></script>
 	</body>
