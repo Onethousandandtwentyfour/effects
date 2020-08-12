@@ -1,0 +1,74 @@
+var app=new Vue({
+	el:'#app',
+	data:{
+		leftBoxColor:{
+			begin:'rgba(255,255,255,0.2)',
+			center:'rgba(255,255,255,0.5)',
+			end:'rgba(255,255,255,0)',
+		},
+		verticalBtnMove:false,
+		horizonBtnMove:false,
+		horizonBtnMove2:false,
+	},
+	computed:{
+		leftBoxColorComputed(){
+			return {
+				'--left-box-begin-color-':this.leftBoxColor.begin,
+				'--left-box-center-color-':this.leftBoxColor.center,
+				'--left-box-end-color-':this.leftBoxColor.end,
+			}
+		},
+		verticalBtnComputed(){
+			return {
+				'--vertical-btn-bg-position-y-':`${this.verticalBtnMove?15:85}%`,
+				'--vertical-btn-transform-y-':`${this.verticalBtnMove?70:0}rem`,
+				'--vertical-btn-transform-rotate-z-':`${this.verticalBtnMove?-30:0}deg`,
+			}
+		},
+		horizonBtnComputed(){
+			return {
+				'--horizon-btn-bg-position-x-':`${this.horizonBtnMove?15:85}%`,
+				'--horizon-btn-transform-x-':`${this.horizonBtnMove?70:0}rem`,
+				'--horizon-btn-transform-rotate-z-':`${this.horizonBtnMove?-30:0}deg`,
+			}
+		},
+		horizonBtnComputed2(){
+			return {
+				'--horizon-btn-bg-position-x-':`${this.horizonBtnMove2?-15:-85}%`,
+				'--horizon-btn-transform-x-':`${this.horizonBtnMove2?0:70}rem`,
+				'--horizon-btn-transform-rotate-z-':`${this.horizonBtnMove2?-30:0}deg`,
+			}
+		},
+		nhBoxComputed(){
+			return this.horizonBtnMove?'nh-text-show':'nh-text-hide';
+		},
+	},
+	watch:{
+		verticalBtnMove(newVal){
+			if(newVal){
+				this.leftBoxColor={
+					begin:'red',
+					center:'yellow',
+					end:'gold',
+				};
+			}else{
+				this.leftBoxColor={
+					begin:'rgba(255,255,255,0.2)',
+					center:'rgba(255,255,255,0.5)',
+					end:'rgba(255,255,255,0)',
+				};
+			}
+		},
+	},
+	methods:{
+		verticalBtnTap(){
+			this.verticalBtnMove=!this.verticalBtnMove;
+		},
+		horizonBtnTap(){
+			this.horizonBtnMove=!this.horizonBtnMove;
+		},
+		horizonBtnTap2(){
+			this.horizonBtnMove2=!this.horizonBtnMove2;
+		}
+	},
+});
