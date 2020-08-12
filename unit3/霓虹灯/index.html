@@ -3,14 +3,33 @@
 	<head>
 		<meta charset="utf-8">
 		<title>霓虹灯1</title>
-		<link rel="stylesheet" type="text/css" href="index.css" />
+		<link rel="stylesheet" type="text/css" href="./index.css" />
 	</head>
 	<body>
-		<div class="box">
-			<input id="checkbox-input" class="checkbox-input" type="checkbox" />
-			<label class="checkbox-label" for="checkbox-input"></label>
-			<text class="light left-light">霓虹灯</text>
-			<text class="light right-light">霓虹灯</text>
+		<div id="app" class="box">
+			<div class="left-box" :style="leftBoxColorComputed"></div>
+			
+			<!-- vertical -->
+			<div class="silver-vertical-btn" :style="verticalBtnComputed">
+				<div class="btn vertical-btn" @click="verticalBtnTap" ></div>
+			</div>
+			<!-- horizon  -->
+			<div class="silver-horizon-btn" :style="horizonBtnComputed">
+				<div class="btn horizon-btn" @click="horizonBtnTap" ></div>
+			</div>
+			
+			<!-- horizon  -->
+			<div class="silver-horizon-btn horizon-box-2" :style="horizonBtnComputed2">
+				<div class="btn horizon-btn-2" @click="horizonBtnTap2"></div>
+			</div>
+			
+			<!-- 霓虹灯 -->
+			<div class="nh-box">
+					<p class="nh-text" :class="nhBoxComputed">霓虹灯</p>
+			</div>
+			
 		</div>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<script src="./index.js"></script>
 	</body>
 </html>
