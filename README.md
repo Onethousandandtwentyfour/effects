@@ -42,4 +42,5 @@
 - [星空](https://onethousandandtwentyfour.github.io/effects/extend/星空/)
 - [骰子](https://onethousandandtwentyfour.github.io/effects/extend/骰子/)
 - [~~擦除90%~~](https://onethousandandtwentyfour.github.io/effects/unit1/初识canvas/cachu.html)
+- [光照-玻璃](https://onethousandandtwentyfour.github.io/effects/extend/光照-玻璃/)
 
