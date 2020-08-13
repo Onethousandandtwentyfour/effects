@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>眼睛动画</title>
+		<link rel="stylesheet" type="text/css" href="index.css" />
+	</head>
+	<body>
+		<div id="app" class="box" @mousemove="mousemove" @touchmove="mousemove">
+			
+			<div class="yp-box">
+				<!-- 身体 box -->
+				<div class="yp-body">
+					<!-- 眼睛 -->
+					<div class="yp-eyes-bg">
+						<div class="eye-box left-eyes" ref="left_eye">
+							<div class="eye" :style="leftEyeComputed"></div>
+							<!-- <div class="abc"></div> -->
+							<div class="eyelid">
+								<div class="top-eyelid" :style="leftEyelidComputed"></div>
+							</div>
+						</div>
+						<div class="eye-box right-eyes" ref="right_eye">
+							<div class="eye" :style="rightEyeComputed"></div>
+							<div class="eyelid">
+								<div class="top-eyelid" :style="rightEyelidComputed"></div>
+							</div>
+						</div>
+					</div>
+					<!-- 嘴巴 -->
+					<div class="yp-mouth"></div>
+					<!-- 口袋 -->
+					<div class="yp-trousers">
+						<div class="yp-trousers-pocket"></div>
+						<div class="yp-trousers-center-pocket"></div>
+					</div>
+				</div>
+				<!-- 双手 -->
+				<div class="yp-leg yp-left-leg"></div>
+				<div class="yp-leg yp-right-leg"></div>
+				<!-- 双脚 -->
+				<div class="rp-footer yp-left-footer"></div>
+				<div class="rp-footer yp-right-footer"></div>
+			</div>
+			
+		</div>
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<script type="text/javascript" src="index.js"></script>
+	</body>
+</html>
