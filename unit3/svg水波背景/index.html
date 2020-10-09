@@ -1,1 +1,57 @@
 
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>svg水波动画</title>
+		<link rel="stylesheet" type="text/css" href="./index.css" />
+	</head>
+
+	<body>
+		<div id="app" class="outer-box">
+			<svg id="svgBox" class="svg-container" :view-box="viewBox" @click="svgClick">
+				<defs>
+					<!-- 盖在 波纹 上的滤镜，模糊波纹，提升真实度 -->
+					<filter id="f" filterUnits="userSpaceOnUse" x="0" y="0" :width="sw" :height="sh">
+						<feImage xlink:href="#circles" x="0" y="0" :width="sw" :height="sh" preserveAspectRatio="xMidYMid meet" result="circles" />
+						<feGaussianBlur in="circles" stdDeviation="4" result="gaussCircles" />
+
+						<feDiffuseLighting in="gaussCircles" lighting-color="white" surfaceScale="50" diffuseConstant="0.5" result="lightCircles">
+							<feDistantLight azimuth="-90" elevation="60" />
+						</feDiffuseLighting>
+
+						<feImage xlink:href="./timg.jpg" x="0" y="0" :width="sw" :height="sh" preserveAspectRatio="xMidYMid slice" result="bgImg" />
+						<feBlend in="lightCircles" in2="bgImg" mode="multiply" />
+					</filter>
+
+					<g id="circles">
+						<g class="ripple" transform="translate(-3000,-3000)">
+							<circle cx="0" cy="0" r="4" stroke-width="2" fill="none" stroke="hsla(0,0%,0%,0.6)" />
+						</g>
+						<!-- 波纹 -->
+						<template v-for="temp of gCircles">
+							<g class="circles-g" :transform="temp.transform">
+								<template v-for="item of initCircles">
+									<circle cx="0" cy="0" :r="item.r.from" :stroke="temp.stroke" stroke-width="2" fill="none">
+										<animate :ref="temp.refName" attributeName="stroke" begin="indefinite" fill="freeze" :from="item.stroke.from"
+										 :to="item.stroke.to" repeatCount="1" :dur="temp.dur" />
+										<animate :ref="temp.refName" attributeName="r" begin="indefinite" fill="freeze" :from="item.r.from" :to="item.r.to"
+										 repeatCount="1" :dur="temp.dur" />
+									</circle>
+								</template>
+							</g>
+						</template>
+					</g>
+
+				</defs>
+				<g>
+					<!-- <use xlink:href="#circles-box" x="0" y="0" :width="sw" :height="sh" fill="none" /> -->
+					<rect x="0" y="0" :width="sw" :height="sh" fill="none" filter="url(#f)" />
+				</g>
+			</svg>
+		</div>
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<script src="./index.js"></script>
+	</body>
+</html>
