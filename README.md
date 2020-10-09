@@ -22,7 +22,7 @@
 | Unit3                        |      |
 | ---------------------------- | ---- |
 | **霓虹灯1**                  | [div+css](https://onethousandandtwentyfour.github.io/effects/unit3/%e9%9c%93%e8%99%b9%e7%81%af/index.html)     |
-| **svg水波背景**              |      |
+| **svg水波背景**              |  [svg](https://onethousandandtwentyfour.github.io/effects/unit3/svg%e6%b0%b4%e6%b3%a2%e8%83%8c%e6%99%af/index.html)  |
 | **浮雕效果**         |  [div+css](https://onethousandandtwentyfour.github.io/effects/unit3/%e6%b5%ae%e9%9b%95%e6%95%88%e6%9e%9c/index.html)    |  
 | **canvas像素操作和电视噪声** |  [canvas](https://onethousandandtwentyfour.github.io/effects/unit3/canvas%e5%99%aa%e5%a3%b0/index.html)    |
 
