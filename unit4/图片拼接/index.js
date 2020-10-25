@@ -177,7 +177,7 @@ var app = new Vue({
 				this.animateEndNum=0;
 				this.price.styles=[];
 				if(this.price.bgIndex>=3){
-					this.price.bgIndex ==1;
+					this.price.bgIndex = 1;
 				}else{
 					this.price.bgIndex += 1;
 				}
@@ -189,8 +189,6 @@ var app = new Vue({
 			if(this.animateEndNum<this.price.styles.length||!this.animate){
 				return;
 			}
-			console.log(this.animateEndNum);
-			console.log(this.animate);
 			this.animateEndNum=0;
 			this.animate=false;
 		},
