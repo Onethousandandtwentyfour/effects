@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>图片拼接</title>
+		<link rel="stylesheet" type="text/css" href="index.css" />
+	</head>
+	<body>
+		<div id="app" class="box" @mousemove="mousemove" :style="radialPositionComputed" @click="change">
+			<div class="bg" :style="bgBoxSizeComputed" ref="price_box">
+				<template v-for="(item,index) in price.styles">
+					<div class="price-outer" :style="{'--animate-delay-index-':priceOuterDelay(index)}" :class="priceOuterClassComputed" @animationend="animationEnd">
+						<div class="price" :style="priceStyleComputed(index)"></div>
+					</div>
+				</template>
+			</div>
+		</div>
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<script type="text/javascript" src="index.js"></script>
+	</body>
+</html>
+ 
