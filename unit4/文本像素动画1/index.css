@@ -1,0 +1,78 @@
+*{
+	margin:0;
+	padding:0;
+}
+html,body{
+	height:100%;
+}
+#app{
+	width:100%;
+	height:100%;
+	position: relative;
+}
+.canvas-container{
+	background-color: black;
+	width:100%;
+	height:100%;
+}
+
+.menu-outer{
+	position: fixed;
+	transform: rotateZ(-45deg);
+}
+.menu-inner{
+	width:100%;
+	height:100%;
+	background: red;
+	opacity: 0.5;
+}
+
+.menu-inner::before,.menu-inner::after{
+	content: '';
+	width:100%;
+	height:100%;
+	background: inherit;
+	position: absolute;
+	left: 0;
+	top: 0;
+	border-radius: 50%;
+}
+.menu-inner::before{
+	background-position:50% 0%;
+	transform: translateY(-50%);
+}
+.menu-inner::after{
+	background-position: 100% 50%;
+	transform: translateX(50%);
+}
+
+.show-menu{
+	transform: scale(0);
+	animation: show-menu-ani 0.3s ease-out 1 forwards;
+}
+
+/* .hide-menu{
+	transform: scale(1);
+	animation: hide-menu-ani 0.3s ease-in 1 forwards;
+} */
+
+@keyframes show-menu-ani{
+	0%{
+		transform: scale(0);
+	}
+	80%{
+		transform: scale(1.2);
+	}
+	100%{
+		transform: scale(1);
+	}
+}
+
+/* @keyframes hide-menu-ani{
+	0%{
+		transform: scale(1);
+	}
+	100%{
+		transform: scale(0);
+	}
+} */
