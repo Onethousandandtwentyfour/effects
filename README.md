@@ -33,7 +33,7 @@
 | ***翻折的字母*** | [div+css](https://onethousandandtwentyfour.github.io/effects/unit4/翻折的文字/) |
 | **看鼠标的眼睛** | [div+css](https://onethousandandtwentyfour.github.io/effects/unit4/眼睛动画/)                                                            |
 | **图片拼接**     | [div+css](https://onethousandandtwentyfour.github.io/effects/unit4/图片拼接/)                                                            |
-| **文本像素动画2**  |                                                              |
+| **文本像素动画**  |   [文本像素动画1](https://onethousandandtwentyfour.github.io/effects/unit4/文本像素动画1/)                                                           |
 
 
 
