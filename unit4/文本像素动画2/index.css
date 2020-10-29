@@ -1,0 +1,22 @@
+*{
+	margin:0;
+	padding: 0;
+}
+html,body{
+	height:100%;
+}
+#app{
+	width:100%;
+	height:100%;
+	position: relative;
+}
+.hide-canvas{
+	width:0;
+	height: 0;
+	display: none;
+}
+.show-canvas{
+	width:100%;
+	height:100%;
+	background:black;
+}
