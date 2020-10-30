@@ -18,7 +18,7 @@ var app = new Vue({
 		animateState:'',// collect 聚集  disperse 分散
 		animationHandlerName:'animateControl',
 		drawText: {
-			text: 'HELLO WORD',
+			text: '你好，世界！',
 			font: 20,
 			grid: 1,
 			color: 'red',
