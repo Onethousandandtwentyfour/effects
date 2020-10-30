@@ -7,9 +7,17 @@
 		<link type="text/css" rel="stylesheet" href="index.css" />
 	</head>
 	<body>
-		<div id="app">
+		<div id="app" >
 			<canvas class="hide-canvas" ref="hide_canvas" :width="vw/bothCanvasScaleRatio" :height="vh/bothCanvasScaleRatio">hide-canvas</canvas>
-			<canvas class="show-canvas" ref="show_canvas" :width="vw" :height="vh">show-canvas</canvas>
+			<canvas @dblclick="animationHandler" class="show-canvas" ref="show_canvas" :width="vw" :height="vh">show-canvas</canvas>
+			<div class="menu" :class="show">
+				<div class="menu-bg" @click="hideMenu"></div>
+				<div class="menu-control">
+						<input class="mc-input" maxlength="4" v-model="textInput" placeholder="填充文案" />
+						<div class="mc-btn" @click="updateDrawText">确认</div>
+						<div class="mc-btn" @click="pauseOrStart">点击{{isPause?'继续':'暂停'}}</div>
+				</div>
+			</div>
 		</div>
 		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 		<script type="module" src="./index.js"></script>

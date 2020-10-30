@@ -20,3 +20,120 @@ html,body{
 	height:100%;
 	background:black;
 }
+
+.menu{
+	width:100%;
+	height:100%;
+	position: fixed;
+	left:0;
+	top:0;
+	transform: translateX(100%);
+	opacity: 0;
+	overflow: hidden;
+}
+.menu-bg{
+	width:100%;
+	height:100%;
+}
+.menu-control{
+	width:300px;
+	height:100%;
+	position: absolute;
+	right:0;
+	top:0;
+	background-color: rgba(255,255,255,0.5);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.mc-input{
+	width:120px;
+	height:40px;
+	line-height: 40px;
+	font-size: 20px;
+	color:orange;
+	text-align: center;
+	box-sizing: border-box;
+	border:1px solid orange;
+	border-radius: 5px;
+	background: none;
+}
+
+input::-webkit-input-placeholder{
+	color:orange;
+	opacity:0.5;
+}
+
+input:focus{
+	outline: none;
+	background: none;
+}
+
+.mc-btn{
+	width:120px;
+	min-height:40px;
+	line-height: 40px;
+	font-size: 20px;
+	text-align: center;
+	font-weight: blod;
+	color:white;
+	border-radius: 5px;
+	background-color: green;
+	margin:20px 0px;
+}
+.mc-btn:active{
+	transform: scale(0.95);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.show{
+	transform: translateX(100%);
+	opacity: 0;
+	animation: show-ani 0.3s ease-out 1 forwards;
+}
+
+.hide{
+	transform: translateX(0%);
+	opacity: 1;
+	animation: hide-ani 0.3s ease-in 1 forwards;
+}
+
+@keyframes show-ani{
+	0%{
+		opacity: 0;
+		transform: translateX(100%);
+	}
+	100%{
+		opacity: 1;
+		transform: translateX(0%);
+	}
+}
+
+@keyframes hide-ani{
+	0%{
+		opacity: 1;
+		transform: translateX(0%);
+	}
+	100%{
+		opacity: 0;
+		transform: translateX(100%);
+	}
+}

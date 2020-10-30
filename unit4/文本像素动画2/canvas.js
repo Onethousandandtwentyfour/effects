@@ -43,7 +43,7 @@ class CanvasControls {
 		//首先清空最近一次的像素点
 		this.effectivePxArr = [];
 		//清空画布
-		this.ctx.clearRect(0, 0, this.vw, this.vh);
+		this.ctx.clearRect(0, 0, this.cvw, this.cvh);
 		//重新绘制文案
 		this.ctx.save();
 		this.ctx.textAlign = 'center';
