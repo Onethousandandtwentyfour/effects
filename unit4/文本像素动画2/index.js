@@ -49,6 +49,9 @@ var app = new Vue({
 			this.show='show';
 		}
 		//初始化
+		let fill=localStorage.getItem("fill");
+		console.log("fill",fill);
+		this.drawText.fill=fill&&'true'==fill;
 		this.hideCtx = new CanvasControls(this, 'hide_canvas', true, this.drawText);
 		this.showCtx = new CanvasControls(this, 'show_canvas', false);
 		this.createParticles();
@@ -98,6 +101,12 @@ var app = new Vue({
 				this.frameAnimation(this.pauseT);
 				this.pauseT=0;
 			}
+		},
+		//仅填充
+		fillOnly(){
+			this.drawText.fill=!this.drawText.fill;
+			localStorage.setItem("fill", `${this.drawText.fill}`);
+			window.location.reload()
 		},
 		//生成像素点
 		createParticles() {

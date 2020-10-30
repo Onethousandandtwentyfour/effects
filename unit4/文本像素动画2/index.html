@@ -16,6 +16,7 @@
 						<input class="mc-input" maxlength="4" v-model="textInput" placeholder="填充文案" />
 						<div class="mc-btn" @click="updateDrawText">确认</div>
 						<div class="mc-btn" @click="pauseOrStart">点击{{isPause?'继续':'暂停'}}</div>
+						<div class="mc-btn" @click="fillOnly">{{drawText.fill?'非':'仅'}}填充</div>
 				</div>
 			</div>
 		</div>
