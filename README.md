@@ -38,7 +38,7 @@
 
 * svg蒙版和图案
 * 擦雾动画
-* canvas绘画基础2    [canvas](https://onethousandandtwentyfour.github.io/effects/unit5/canvas绘画基础2/)
+* canvas绘画基础-2    [canvas](https://onethousandandtwentyfour.github.io/effects/unit5/canvas绘画基础-2/)
 * 加载动画
 
 ###### Extend
