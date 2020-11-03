@@ -1,0 +1,63 @@
+*{
+	margin:0;
+	padding:0;
+	box-sizing: border-box;
+}
+html,body{
+	height:100%;
+}
+#app{
+	width:100%;
+	height:100%;
+	position: relative;
+	overflow: hidden;
+}
+ 
+ .back-box{
+	 width:100%;
+	 height:0px;
+	 position: relative;
+	 display: flex;
+	 justify-content: center;
+	 align-items: flex-start;
+ }
+ 
+ .bb-img{
+	 width:100%;
+	 height:calc(100vw*1080/1920);
+ }
+ 
+ .front-box{
+	 width:100%;
+	 height:100%;
+	 position: relative;
+	 background: white;
+	 filter:blur(15px);
+	 mix-blend-mode:lighten;
+ }
+ 
+.circle{
+	width:80px;
+	height:80px;
+	background:#000000;
+	border-radius: 50%;
+	position: absolute;
+	left:-80px;
+	top:-80px;
+	transform-origin: center;
+}
+
+.hide-circle{
+	--animation-index-:0;
+	animation: hide-circle-ani 1s linear 1 forwards;
+	animation-delay: calc(var(--animation-index-)*0.001s);
+}
+
+@keyframes hide-circle-ani{
+	0%{
+		opacity: 1;
+	}
+	100%{
+		opacity: 0;
+	}
+}

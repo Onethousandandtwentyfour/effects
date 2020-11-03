@@ -1,1 +1,37 @@
-
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>擦雾动画</title>
+		<link type="text/css" rel="stylesheet" href="./index.css" />
+	</head>
+	<body>
+		<div id="app">
+			<div class="back-box">
+				<img src="./snow.png" object-fit="contain" class="bb-img" />
+			</div>
+			<div class="front-box" @mousedown="startDraw" @mousemove="drawContinue" @mouseup="endDraw">
+				<!-- 新建dom -->
+				<template v-if="'dom'==showType">
+					<template v-for="(item,index) in circleNodes">
+						<template v-for="(temp,tindex) in item">
+							<template v-if="temp.show">
+								<div class="circle" :class="circleClassComputed(temp)" :style="circleStyleComputed(temp,tindex)" @animationend="animateEnd"
+								 :data-outer="index" :data-inner="tindex"></div>
+							</template>
+						</template>
+					</template>
+				</template>
+				<!-- box-shadow -->
+				<template v-else-if="'box-shadow'==showType">
+					<template v-for="(item,index) in circleNodes">
+						<div class="circle" :class="circleBSClassComputed(item)" :style="circleBSStyleComputed(item,index)"></div>
+					</template>
+				</template>
+			</div>
+		</div>
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<script type="module" src="./index.js"></script>
+	</body>
+</html>
