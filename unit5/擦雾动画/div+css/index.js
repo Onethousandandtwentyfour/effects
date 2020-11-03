@@ -30,7 +30,7 @@ var app = new Vue({
 				let boxShadowArr = [],
 					i;
 				for (i = 0; i < temp.length; i++) {
-					boxShadowArr.push(`${temp[i].x}px ${temp[i].y}px 40px #000000`);
+					boxShadowArr.push(`${temp[i].x}px ${temp[i].y}px 20px #000000`);
 				}
 				return {
 					'box-shadow': boxShadowArr.join(','),
