@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>svg蒙版和图案</title>
+		<link type="text/css" rel="stylesheet" href="./index.css" />
+	</head>
+	<body>
+		<div id="app">
+			<svg class="fill-box" viewBox="0 0 1200 200" preserveAspectRatio="xMidYMid meet">
+				<defs>
+					<mask id="svg-mask" width="1" height="1" x="0" y="0">
+						<!-- 蒙版/mask  x&y 必写，否则x&y默认是以-10%为原点   -->
+						<!-- maskUnits  
+								1.默认 objectBoundingBox   以目标对象使用的尺寸为标准，类似与子节点 
+								2.userSpaceOnUse  以viewBox设置的尺寸为标准
+						-->
+						<!-- maskContentUnits  为maks内元素单位设置大小
+								1.默认 userSpaceOnUse 
+								2.objectBoundingBox  
+						 -->
+						<!-- <rect x="0" y="0" width="1200" height="200" fill="url(#liGradient)" /> -->
+						<text class="sm-text" x="600" y="160" font-size="100" fill="white">代码无BUG</text>
+					</mask>
+					<LinearGradient id="liGradient">
+						<stop  offset="0" stop-color="white"></stop>
+						<stop  offset="100%" stop-color="black"></stop>
+					</LinearGradient>
+					<pattern id="svg-pattern" width="0.2" height="3" x="0" y="0.5">
+						<!-- y轴动画 涨&降 为一次动画时间 所以dur为单次 涨/降 dur 的两倍 -->
+						<animate attributeName="x" :dur="xAnimationDurComputed" from="0" to="1" repeatCount="indefinite" />
+						<animate attributeName="y" :dur="yAnimationDurComputed" calcMode="linear" values="1;0.3;1" keyTimes="0;0.5;1"
+						 repeatCount="indefinite" />
+						<!-- 降 -->
+						<path id="wave_path-b" d="
+						M0,0c50.5,0,68.3,0,100,0c37.4,0,44.7,0,100,0v50H0V0z" :style="waterFill(2)">
+							<animate attributeName="d" values="
+						   M0,0c50.5,0,68.3,0,100,0c37.4,0,44.7,0,100,0v50H0V0z;
+						   M0,15C50.5,15,68.3,5,100,5c37.4,0,44.7,10,100,10v35H0V15z;
+						   M0,0c50.5,0,68.3,0,100,0c37.4,0,44.7,0,100,0v50H0V0z
+						   "
+							 keyTimes="0;0.5;1" begin="0" :dur="waterAnimationDurComputed" calcMode="linear" repeatCount="indefinite" />
+						</path>
+						<!-- 涨 -->
+						<path id="wave_path-a" d="
+						M0,0c50.5,0,68.3,0,100,0c37.4,0,44.7,0,100,0v50H0V0z" :style="waterFill(1)">
+							<animate attributeName="d" values="
+						   M0,0c50.5,0,68.3,0,100,0c37.4,0,44.7,0,100,0v50H0V0z;
+						   M0,0c50.5,0,68.3,25,100,25c37.4,0,44.7-25,100-25v50H0V0z;
+						   M0,0c50.5,0,68.3,0,100,0c37.4,0,44.7,0,100,0v50H0V0z
+						   "
+							 keyTimes="0;0.5;1" begin="0" :dur="waterAnimationDurComputed" calcMode="linear" repeatCount="indefinite" />
+						</path>
+						<rect x="0" y="49" width="200" height="200" :style="waterFill(1)"></rect>
+					</pattern>
+				</defs>
+				<rect class="content" width="1200" height="200" fill="url(#liGradient)" />
+				<rect class="content" width="1000" height="200" x="100" y="0" fill="url(#svg-pattern)" />
+			</svg>
+			<div class="lg-box" @click="animationStateChange">
+					<!-- logo svg -->
+					<svg class="fill-box lg-svg" :style="lgAnimationComputed"  viewBox="0 0 100 100">
+						<defs>
+							<mask id="lg-mask" width="1" height="1" x="0" y="0">
+								<rect width="100" height="100" x="0" y="0" fill="white" />
+								<text class="sm-text" x="50" y="80" font-size="80" fill="black">☠</text>
+							</mask>
+						</defs>
+						<rect width="100" height="100" x="0" y="0" mask="url(#lg-mask)" />
+					</svg>
+			</div>
+		</div>
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<script type="module" src="./index.js"></script>
+	</body>
+</html>
