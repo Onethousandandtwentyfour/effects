@@ -31,7 +31,7 @@
 
 ###### Unit5
 
-* svg蒙版和图案
+* svg蒙版和图案       [svg](https://onethousandandtwentyfour.github.io/effects/unit5/svg蒙版和图案/)
 * 擦雾动画            [div+css](https://onethousandandtwentyfour.github.io/effects/unit5/擦雾动画/div+css/)
 * canvas绘画基础-2    [canvas](https://onethousandandtwentyfour.github.io/effects/unit5/canvas绘画基础-2/)
 * 加载动画
