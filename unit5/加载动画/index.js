@@ -73,12 +73,11 @@ var app=new Vue({
 				rw:0.8,
 				rh:0.1,
 				rx:0.1,
-				ry:0.85,
+				ry:0.65,
 				isReal:false,
 				show:true,
-			}
-			];
-			this.particleInstanceList=[[]];
+			}];
+			this.particleInstanceList=[[],[],[]];
 			this.initInstance(bar);
 		},
 		//绘制图形
