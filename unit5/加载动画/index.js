@@ -67,8 +67,17 @@ var app=new Vue({
 				rx:0.1,
 				ry:0.25,
 				isReal:false,
-				show:false,
-			}];
+				show:true,
+			},
+			{
+				rw:0.8,
+				rh:0.1,
+				rx:0.1,
+				ry:0.85,
+				isReal:false,
+				show:true,
+			}
+			];
 			this.particleInstanceList=[[]];
 			this.initInstance(bar);
 		},
