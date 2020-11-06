@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>加载动画</title>
+		<link type="text/css" rel="stylesheet" href="./index.css" />
+	</head>
+	<body>
+		<div id="app">
+			<canvas class="show-canvas" ref="show_canvas" :width="vw" :height="vh">该换浏览器啦</canvas>
+			<div class="menu-box" :class="showMenu" :hidden="!showMenu" @animationend="menuAnimationEnd">
+				
+				<div class="m-settings-box m-border m-sv-box list-box" :class="listBoxClassCompted">
+					<div class="m-label-title">进度条-1</div>
+					<div class="m-form-row m-border">
+						<!-- <input type="checkbox" class="m-input-checkbox"/> -->
+						<div>是否开启</div>
+						<div class="m-div-checkbox"></div>
+					</div>
+				</div>
+				
+				<div class="m-list-box m-border m-sv-box list-box" :class="listBoxClassCompted">
+					<div class="m-label-title">进度条-2</div>
+					<div class="m-form-row m-border">
+						<!-- <input type="checkbox" class="m-input-checkbox"/> -->
+						<div>是否开启</div>
+						<div class="m-div-checkbox" @click="openBar" data-index="1"></div>
+					</div>
+				</div>
+				
+				<div class="m-btn m-border m-close" :class="btnClassComputed" @click="closeMenu">关闭</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<script type="module" src="./index.js"></script>
+	</body>
+</html>

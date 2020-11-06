@@ -1,0 +1,234 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+html,body{
+	height:100%;
+}
+
+/* util */
+.m-btn{
+	width:100px;
+	height:40px;
+	line-height: 40px;
+	text-align: center;
+	font-size: 15px;
+	color:white;
+	font-weight: bold;
+	background: transparent;
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	overflow: hidden;
+}
+.m-border:before{
+	content: '';
+	width:calc(200% - 2px);
+	height:calc(200% - 2px);
+	box-sizing: border-box;
+	border:1px solid white;
+	border-radius: 10px;
+	position: absolute;
+	left:50%;
+	top:50%;
+	transform: translate(-50%,-50%) scale(0.5);
+}
+.m-btn:active{
+	transform:scale(0.95);
+}
+.m-sv-box::-webkit-scrollbar{
+	display: none;
+}
+
+#app{
+	width:100%;
+	height:100%;
+	position: relative;
+	overflow: hidden;
+}
+.show-canvas{
+	width:100%;
+	height:100%;
+	background-color: transparent;
+}
+
+.menu-box{
+	width:100%;
+	height: 100%;
+	position: absolute;
+	left:0;
+	top:0;
+	background:rgba(7,17,27,.5);
+	backdrop-filter: blur(10px);
+	opacity: 0;
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
+.m-close{
+	position: absolute;
+	right:50px;
+	top:50px;
+	opacity: 0;
+}
+
+.m-settings-box{
+	--init-show-:-100px;
+}
+
+.m-list-box{
+	--init-show-:100px;
+}
+
+.list-box{
+	flex-shrink: 0;
+	width:calc(50% - 250px);
+	height:calc(100% - 100px);
+	overflow-x: hidden;
+	overflow-y: scroll;
+	position: relative;
+	padding:0px 20px;
+	/* box-shadow: -1px -1px 1px white inset,-5px -5px 5px black; */
+}
+
+.m-label-title{
+	width:100%;
+	height:40px;
+	line-height: 40px;
+	font-size: 20px;
+	text-align: left;
+	font-weight: bold;
+	white-space: nowrap;
+	color:white;
+}
+
+.m-form-row{
+	width:100%;
+	min-height:40px;
+	line-height: 40px;
+	font-size: 15px;
+	white-space: nowrap;
+	color:white;
+	position: relative;
+	padding:0px 20px;
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.m-div-checkbox{
+	width:100px;
+	height:30px;
+	background-color: #666;
+	border-radius: 10px;
+	position: relative;
+}
+
+
+
+
+
+.show{
+	opacity: 0;
+	animation: show-menu-ani 0.8s ease-out 1 forwards;
+}
+.hide{
+	opacity: 1;
+	animation: hide-menu-ani 0.3s ease-in 1 forwards;
+}
+
+@keyframes show-menu-ani{
+	0%{
+		opacity: 0;
+		transform: rotateY(90deg);
+	}
+	100%{
+		opacity: 1;
+		transform: rotateY(0deg);
+	}
+}
+
+@keyframes hide-menu-ani{
+	0%{
+		opacity: 1;
+		transform: translateY(0px);
+	}
+	100%{
+		opacity: 0;
+		transform: translateY(100px);
+	}
+}
+
+
+.btn-show{
+	opacity: 0;
+	animation: btn-show-ani 0.3s ease-out 1 forwards;
+	animation-delay: 0.8s;
+}
+
+.btn-hide{
+	opacity: 1;
+	animation: btn-hide-ani 0.3s ease-in 1 forwards;
+}
+
+
+@keyframes btn-show-ani{
+	0%{
+		opacity: 0;
+		transform: translateY(30px);
+	}
+	100%{
+		opacity: 1;
+		transform: translateY(0px);
+	}
+}
+
+@keyframes btn-hide-ani{
+	0%{
+		opacity: 0;
+		transform: translateY(0px);
+	}
+	100%{
+		opacity: 1;
+		transform: translateY(30px);
+	}
+}
+
+
+.list-box-show{
+	opacity: 0;
+	animation: list-box-show-ani 0.3s ease-out 1 forwards;
+	animation-delay: 0.8s;
+}
+.list-box-hide{
+	opacity: 1;
+	animation: list-box-hide-ani 0.3s ease-in 1 forwards;
+}
+
+@keyframes list-box-show-ani{
+	0%{
+		opacity: 0;
+		transform: translateX(var(--init-show-));
+	}
+	100%{
+		opacity: 1;
+		transform: translateX(0px);
+	}
+}
+
+@keyframes list-box-hide-ani{
+	0%{
+		opacity: 1;
+		transform: translateX(0px);
+	}
+	100%{
+		opacity: 0;
+		transform: translateX(var(--init-show-));
+	}
+}
