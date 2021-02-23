@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>svg文字渐变</title>
+		<style>
+			@import './index.css'
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<div class="svg-example">
+				<div class="tips-outer">
+					<p class="blue-bg">1.svg stroke-width是沿着容器边缘向内&向外各延展stroke-width数值的一半</p>
+					<p class="pink-bg">2. radialGradient 从焦点到圆心做射线，以此射线为中心轴，做一个圆锥，焦点可以理解为圆锥的顶点，圆心可以理解为圆锥底面的中心。（方便理解焦点与圆心的关系）</p>
+				</div>
+				<!-- 线性渐变 -->
+				<svg class="svg-outer" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid meet">
+					<defs>
+						<linearGradient id="lg">
+							<stop offset="0%" stop-color="red" stop-opacity="0.5"></stop>
+							<stop offset="25%" stop-color="red" stop-opacity="0.5"></stop>
+							<stop offset="25%" stop-color="orange" stop-opacity="0.5"></stop>
+							<stop offset="50%" stop-color="orange" stop-opacity="0.5"></stop>
+							<stop offset="50%" stop-color="yellow" stop-opacity="0.5"></stop>
+							<stop offset="75%" stop-color="yellow" stop-opacity="0.5"></stop>
+							<stop offset="75%" stop-color="green" stop-opacity="0.5"></stop>
+							<stop offset="100%" stop-color="green" stop-opacity="0.5"></stop>
+						</linearGradient>
+						<linearGradient id="lg2" xlink:href="#lg" x1="0%" y1="0%" x2="0%" y2="10%" spreadMethod="reflect"></linearGradient>
+					</defs>
+					<rect x="0" y="0" width="1920" height="1080" stroke-width="100" stroke="url(#lg)" fill="url(#lg2)"></rect>
+				</svg>
+				<!-- 径向渐变 -->
+				<svg class="svg-outer" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid meet">
+					<defs>
+						<radialGradient id="rg" fx="50%" fy="50%" cx="50%" cy="50%" r="30%">
+							<stop offset="0%" stop-color="red" stop-opacity="0.5"></stop>
+							<stop offset="25%" stop-color="red" stop-opacity="0.5"></stop>
+							<stop offset="25%" stop-color="orange" stop-opacity="0.5"></stop>
+							<stop offset="50%" stop-color="orange" stop-opacity="0.5"></stop>
+							<stop offset="50%" stop-color="yellow" stop-opacity="0.5"></stop>
+							<stop offset="75%" stop-color="yellow" stop-opacity="0.5"></stop>
+							<stop offset="75%" stop-color="green" stop-opacity="0.5"></stop>
+							<stop offset="100%" stop-color="green" stop-opacity="0.5"></stop>
+						</radialGradient>
+						<radialGradient id="rg2" :fx="radialGradientSettings('focusX')" :fy="radialGradientSettings('focusY')" :cx="radialGradientSettings('centerOfCircleX')" :cy="radialGradientSettings('centerOfCircleY')" r="30%" xlink:href="#rg" spreadMethod="repeat"></radialGradient>
+					</defs>
+					<rect x="0" y="0" width="1920" height="1080" stroke-width="100" stroke="url(#rg)" fill="url(#rg2)"></rect>
+				</svg>
+			</div>
+			<div class="svg-example">
+				<!-- pattern -->
+				<svg class="svg-outer" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid meet">
+					<defs>
+						<!-- 亮光 -->
+						<linearGradient id="llg" x1="10%" y1="30%" x2="80%" y2="60%" spreadMethod="pad">
+							<stop offset="0%" stop-color="rgba(0,0,0,0.1)" />
+							<stop offset="20%" stop-color="rgba(0,0,0,0.1)" />
+							<stop offset="30%" stop-color="rgba(255,255,255,1)" />
+							<stop offset="40%" stop-color="rgba(0,0,0,0.1)" />
+							<stop offset="60%" stop-color="rgba(0,0,0,0.1)" />
+							<stop offset="70%" stop-color="rgba(255,255,255,1)" />
+							<stop offset="80%" stop-color="rgba(0,0,0,0.1)" />
+							<stop offset="100%" stop-color="rgba(0,0,0,0.1)" />
+						</linearGradient>
+						<pattern id="plg" x="0" y="0" width="1920" height="1080" viewBox="0 0 960 540" patternUnits="userSpaceOnUse"
+						 preserveAspectRatio="xMidYMid slice">
+							<rect x="0" y="0" width="960" height="540" fill="url(#llg)"></rect>
+							<animate attributeName="x" dur="2s" calcMode="linear" values="1920;0" keyTimes="0;1" repeatCount="indefinite">
+							</animate>
+						</pattern>
+						<!-- 条形色块 -->
+						<linearGradient id="tlg" x1="0%" y1="0%" x2="10%" y2="0%" xlink:href="#lg" spreadMethod="repeat"></linearGradient>
+						<pattern id="plg2" x="0" y="0" x="0" y="0" width="1920" height="1080" viewBox="0 0 960 540" patternUnits="userSpaceOnUse"
+						 preserveAspectRatio="xMidYMid slice">
+							<rect x="0" y="0" width="960" height="540" fill="url(#tlg)"></rect>
+							<animate attributeName="x" dur="10s" calcMode="linear" values="0;1920" keyTimes="0;1" repeatCount="indefinite">
+							</animate>
+						</pattern>
+					</defs>
+					<rect x="0" y="0" width="1920" height="1080" fill="url(#plg2)"></rect>
+					<rect x="0" y="0" width="1920" height="1080" fill="url(#plg)"></rect>
+				</svg>
+				<!-- 将渐变应用于文字效果 -->
+				<svg class="svg-outer" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid meet">
+					<rect x="0" y="0" width="1920" height="1080" fill="rgba(0,0,0,1)"></rect>
+					<text x="100" y="700" style="font-size:400;font-weight:600;fill:url(#plg2);">SVG-666</text>
+					<text x="100" y="700" style="font-size:400;font-weight:600;fill:url(#plg);">SVG-666</text>
+				</svg>
+				
+				<div class="input-controller-box">
+					<p>焦点-focusX-{{focusX}}</p>
+					<input type="range" class="input-range" htmlattrdefmin="0" htmlattrdef="100" v-model="focusX" />
+					<p>焦点-focusY-{{focusY}}</p>
+					<input type="range" class="input-range" htmlattrdefmin="0" htmlattrdef="100" v-model="focusY" />
+					<p>圆心-centerOfCircleX-{{centerOfCircleX}}</p>
+					<input type="range" class="input-range" htmlattrdefmin="0" htmlattrdef="100" v-model="centerOfCircleX" />
+					<p>圆心-centerOfCircleY-{{centerOfCircleY}}</p>
+					<input type="range" class="input-range" htmlattrdefmin="0" htmlattrdef="100" v-model="centerOfCircleY" />
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script type="module" src="./index.js"></script>
+</html>
