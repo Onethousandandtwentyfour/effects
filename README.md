@@ -36,6 +36,17 @@
 * canvas绘画基础-2    [canvas](https://onethousandandtwentyfour.github.io/effects/unit5/canvas绘画基础-2/)
 * 加载动画            [canvas](https://onethousandandtwentyfour.github.io/effects/unit5/加载动画/)
 
+###### Unit5
+
+* svg蒙版和图案       [svg](https://onethousandandtwentyfour.github.io/effects/unit5/svg蒙版和图案/)
+* 擦雾动画            [div+css](https://onethousandandtwentyfour.github.io/effects/unit5/擦雾动画/div+css/)
+* canvas绘画基础-2    [canvas](https://onethousandandtwentyfour.github.io/effects/unit5/canvas绘画基础-2/)
+* 加载动画            [canvas](https://onethousandandtwentyfour.github.io/effects/unit5/加载动画/)
+
+###### Unit6
+
+* svg渐变       [svg](https://onethousandandtwentyfour.github.io/effects/unit6/svg蒙版和图案/)
+
 ###### Extend
 
 - [星空](https://onethousandandtwentyfour.github.io/effects/extend/星空/)
