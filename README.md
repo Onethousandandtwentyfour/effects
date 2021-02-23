@@ -45,7 +45,7 @@
 
 ###### Unit6
 
-* svg渐变       [svg](https://onethousandandtwentyfour.github.io/effects/unit6/svg蒙版和图案/)
+* svg渐变       [svg](https://onethousandandtwentyfour.github.io/effects/unit6/svg渐变/)
 
 ###### Extend
 
