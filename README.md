@@ -46,7 +46,7 @@
 ###### Unit6
 
 * svg渐变       [文字渐变](https://onethousandandtwentyfour.github.io/effects/unit6/svg渐变/)
-* 电子钟       [文字渐变](https://onethousandandtwentyfour.github.io/effects/unit6/电子钟/)
+* 电子钟       [div+css](https://onethousandandtwentyfour.github.io/effects/unit6/电子钟/)
 
 ###### Extend
 
