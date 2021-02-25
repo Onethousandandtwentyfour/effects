@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>电子钟</title>
+		<style>
+			@import './index.css';
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<div class="clock-outer">
+				<div class="clock-content-box" :class="startClockParse">
+					<div class="clock-week-outer">
+						<div class="clock-week-text" :class="weekParse(7)">Sun</div>
+						<div class="clock-week-text" :class="weekParse(1)">Mon</div>
+						<div class="clock-week-text" :class="weekParse(2)">Tues</div>
+						<div class="clock-week-text" :class="weekParse(3)">Web</div>
+						<div class="clock-week-text" :class="weekParse(4)">Thur</div>
+						<div class="clock-week-text" :class="weekParse(5)">Fir</div>
+						<div class="clock-week-text" :class="weekParse(6)">Sat</div>
+					</div>
+					<div class="clock-icon-outer" :class="[alarmClockParse,alarmClockIconParse]">
+						<div class="clock-icon-inner">
+							<div class="cii-top">
+							</div>
+							<div class="cii-pointer">
+							</div>
+							<div class="cii-bottom">
+							</div>
+						</div>
+					</div>
+					<num-tube :num="timeSettings.hours.ten" :class="setAlarmClockParse('hours')"></num-tube>
+					<num-tube :num="timeSettings.hours.one" :class="setAlarmClockParse('hours')"></num-tube>
+					<div class="ccb-pointer-box"></div>
+					<num-tube :num="timeSettings.minutes.ten" :class="setAlarmClockParse('minutes')"></num-tube>
+					<num-tube :num="timeSettings.minutes.one" :class="setAlarmClockParse('minutes')"></num-tube>
+					<div class="ccb-pointer-box"></div>
+					<num-tube :num="timeSettings.seconds.ten" :class="setAlarmClockParse('seconds')"></num-tube>
+					<num-tube :num="timeSettings.seconds.one" :class="setAlarmClockParse('seconds')"></num-tube>
+					<div class="hours-parse-icon">{{hoursParse}}</div>
+				</div>
+				<div class="clock-controller-box">
+					<div class="cb-btn cb-change-state" @click="setClockTap"></div>
+					<div class="cb-btn cb-last" @click="clockTap" data-type="last">上一个</div>
+					<div class="cb-btn cb-next" @click="clockTap" data-type="next">下一个</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<script type="module" src="./index.js"></script>
+	</body>
+</html>

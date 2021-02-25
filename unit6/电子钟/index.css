@@ -1,0 +1,406 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html,
+body {
+	height: 100%;
+}
+
+#app {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	overflow: hidden;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+
+	background-color: rgba(0, 0, 0, 1);
+}
+
+/* 时钟 */
+.clock-outer {
+	border-radius: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 20px 20px 20px 60px;
+	background: rgb(240, 240, 240);
+	border-radius: 20px;
+}
+
+.clock-content-box {
+	border-radius: 20px;
+	background: rgb(217, 217, 217);
+	box-shadow: 6px 4px 0px rgba(0, 0, 0, 0.6) inset, 0px 0px 20px rgba(0, 0, 0, 1) inset;
+	white-space: nowrap;
+	box-sizing: border-box;
+	padding: 30px 20px;
+	overflow: hidden;
+	position: relative;
+	--content-bg: none;
+}
+
+.clock-content-box:hover {
+	--content-bg: radial-gradient(rgba(255, 0, 0, 0.1), rgba(255, 0, 0, 0.4));
+}
+
+.clock-content-box::before {
+	content: '';
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	background: var(--content-bg);
+}
+
+.clock-content-box-start-clock::after{
+	content: '';
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	animation: start-clock-ani 1s linear infinite forwards;
+}
+
+@keyframes start-clock-ani{
+	0%{
+		background:none;
+	}
+	50%{
+		background: radial-gradient(rgba(255, 0, 0, 0.1), rgba(255, 0, 0, 0.4));
+	}
+	100%{
+		background:none;
+	}
+}
+
+.clock-num-box {
+	position: relative;
+	white-space: nowrap;
+}
+
+.clock-controller-box {
+	width: 100px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
+.cb-btn {
+	margin: 10px 20px;
+	width: 80px;
+	height: 40px;
+	border-radius: 6px;
+	background: #e0e0e0;
+	box-shadow: 1px 1px white, 1px 1px #ccc inset;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	--btn-active-y: 0px;
+	--btn-icon-color:#aaa;
+	--btn-icon-box-shadow:#888;
+}
+
+.cb-btn::before {
+	content: '';
+	width: 90%;
+	height: 80%;
+	border-radius: 6px;
+	background: linear-gradient(135deg, white, #ccc);
+	box-shadow: 0 0 3px rgb(0, 0, 0, 0.3), 1px 1px 1px rgb(0, 0, 0, 0.2), 2px 2px 3px rgb(0, 0, 0, 0.1);
+	position: absolute;
+	transform: translateY(var(--btn-active-y));
+}
+
+.cb-change-state::after,
+.cb-last::after,
+.cb-next::after {
+	font-size: 28px;
+	color: var(--btn-icon-color);
+	text-shadow: -1px -1px #888, 1px 1px white;
+	position: absolute;
+	transform: translateY(var(--btn-active-y));
+}
+
+.cb-change-state::after {
+	content: '\2618';
+}
+
+.cb-last::after {
+	content: "\25B2";
+}
+
+.cb-next::after {
+	content: "\25BC";
+}
+
+.cb-change-state:active,
+.cb-last:active,
+.cb-next:active {
+	--btn-active-y: 1px;
+	--btn-icon-color:red;
+	--btn-icon-box-shadow:red;
+}
+
+
+/* 灯管盒子 */
+.number-tube-outer {
+	width: 108px;
+	height: 204px;
+	margin: 10px;
+	position: relative;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.light-tube {
+	--tube-color: #000000;
+	box-shadow: -2px 2px 2px #aaa;
+
+}
+
+.dark-tube {
+	--tube-color: #d0d0d0;
+}
+
+.tube {
+	width: 80px;
+	height: 12px;
+	background-color: var(--tube-color);
+	position: absolute;
+}
+
+.tube::before,
+.tube::after {
+	content: '';
+	width: 0px;
+	height: 0px;
+	border: 6px solid transparent;
+	position: absolute;
+}
+
+.tube::before {
+	transform: translateX(-12px);
+	left: 0px;
+	border-right-color: var(--tube-color);
+}
+
+.tube::after {
+	transform: translateX(12px);
+	right: 0px;
+	border-left-color: var(--tube-color);
+}
+
+.up-center-tube {
+	transform: translate(0px, -96px);
+}
+
+.up-left-tube {
+	transform: translate(-48px, -48px) rotate(90deg);
+}
+
+.up-right-tube {
+	transform: translate(48px, -48px) rotate(90deg);
+}
+
+.down-left-tube {
+	transform: translate(-48px, 48px) rotate(90deg);
+}
+
+.down-right-tube {
+	transform: translate(48px, 48px) rotate(90deg);
+}
+
+.down-center-tube {
+	transform: translate(0px, 96px);
+}
+
+.ccb-pointer-box {
+	display: inline-block;
+	width: 30px;
+	height: 204px;
+	margin: 10px;
+	position: relative;
+}
+
+.ccb-pointer-box::before,
+.ccb-pointer-box::after {
+	content: '';
+	width: 12px;
+	height: 12px;
+	background-color: black;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	animation: pointer-ani 1s linear infinite forwards;
+}
+
+.ccb-pointer-box::before {
+	transform: translate(-50%, calc(-100% - 20px));
+}
+
+.ccb-pointer-box::after {
+	transform: translate(-50%, calc(-100% + 20px));
+}
+
+@keyframes pointer-ani {
+	0% {
+		opacity: 1;
+	}
+
+	50% {
+		opacity: 0.1;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+.clock-icon-outer,
+.hours-parse-icon {
+	display: inline-flex;
+	vertical-align: top;
+	height: 220px;
+	font-size: 28px;
+	font-weight: bold;
+	text-align: center;
+	margin: 10px;
+	justify-content: center;
+	align-items: flex-end;
+	position: relative;
+}
+
+.hours-parse-icon {
+	text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
+}
+
+.clock-icon-outer {
+	position: relative;
+	margin: 10px 30px;
+}
+
+.setting-clock {
+	--clock-color: #000000;
+}
+
+.cancel-clock {
+	--clock-color: #d0d0d0;
+}
+
+.clock-icon-inner {
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+	border: 5px solid var(--clock-color);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.cii-top,
+.cii-pointer,
+.cii-bottom {
+	width: 0px;
+	height: 0px;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.cii-top::before,
+.cii-top::after {
+	content: '';
+	width: 40px;
+	height: 45px;
+	border-radius: 50%;
+	background: linear-gradient(var(--clock-color) 0% 50%, rgba(0, 0, 0, 0) 50% 100%);
+	position: absolute;
+}
+
+.cii-top::before {
+	transform: translate(-25px, -35px) rotate(-35deg);
+}
+
+.cii-top::after {
+	transform: translate(25px, -35px) rotate(35deg);
+}
+
+.cii-bottom::before,
+.cii-bottom::after {
+	content: '';
+	width: 5px;
+	height: 15px;
+	background-color: var(--clock-color);
+	position: absolute;
+}
+
+.cii-bottom::before {
+	transform: translate(-25px, 35px) rotate(30deg);
+}
+
+.cii-bottom::after {
+	transform: translate(25px, 35px) rotate(-30deg);
+}
+
+.cii-pointer::before,
+.cii-pointer::after {
+	content: '';
+	width: 8px;
+
+	background-color: var(--clock-color);
+	position: absolute;
+}
+
+.cii-pointer::before {
+	height: 20px;
+	transform: translateY(-50%);
+}
+
+.cii-pointer::after {
+	height: 30px;
+	transform-origin: left bottom;
+	transform: translateY(-50%) rotate(90deg);
+}
+
+.clock-week-outer {
+	width: 100%;
+	height: 100px;
+	box-sizing: border-box;
+	padding: 0px 25px 0px 50px;
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: space-evenly;
+	align-items: flex-start;
+	position: relative;
+	--week-color: #d0d0d0;
+}
+
+.setting-week {
+	--week-color: #000000;
+	text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
+}
+
+.clock-week-text {
+	text-align: center;
+	font-size: 36px;
+	font-weight: bold;
+	color: var(--week-color);
+}
+
+
+.opacity-animation{
+	animation: pointer-ani 1s linear infinite forwards;
+}
