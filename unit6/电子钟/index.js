@@ -6,7 +6,7 @@ var app = new Vue({
 	},
 	data() {
 		return {
-			state: 'time', //time 时间 date 日期
+			state: 'time', //time 时间 date 日期 clock 闹钟
 			clockState: [], //设置闹钟 时间段
 			animationFrameSetting: {
 				fps: 1000 / 1,
@@ -119,11 +119,11 @@ var app = new Vue({
 					let temp = this.clockState[0],
 						num = this.timeSettings[temp].ten * 10 + this.timeSettings[temp].one;
 					if ('last' == type) {
-						//减少
-						num -= 1;
-					} else {
 						//增加
 						num += 1;
+					} else {
+						//减少
+						num -= 1;
 					}
 					if ('hours' == temp) {
 						if (num < 0) num = 23;
@@ -160,6 +160,7 @@ var app = new Vue({
 				this.timeSettings.hasBeenSet = true;
 				Object.assign(this.alarmClock, this.timeSettings);
 				this.clockState = [];
+				this.updateTime();
 				this.state = 'time';
 				return;
 			}

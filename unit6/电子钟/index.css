@@ -274,6 +274,7 @@ body {
 .hours-parse-icon {
 	display: inline-flex;
 	vertical-align: top;
+	width:100px;
 	height: 220px;
 	font-size: 28px;
 	font-weight: bold;
