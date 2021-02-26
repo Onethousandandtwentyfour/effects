@@ -42,9 +42,9 @@ var app = new Vue({
 					ten: 0,
 				}
 			},
-			clockStart:false,
+			clockStart: false,
 			dateTimeout: 0,
-			clockTimeout:0,
+			clockTimeout: 0,
 		}
 	},
 	computed: {
@@ -67,18 +67,18 @@ var app = new Vue({
 				return 'clock' == this.state && this.clockState.includes(position) ? 'opacity-animation' : '';
 			}
 		},
-		startClockParse(){
-			return this.clockStart?"clock-content-box-start-clock":"";
+		startClockParse() {
+			return this.clockStart ? "clock-content-box-start-clock" : "";
 		},
 	},
-	watch:{
-		clockStart(newVal){
-			if(newVal){
+	watch: {
+		clockStart(newVal) {
+			if (newVal) {
 				clearTimeout(this.clockTimeout);
-				this.clockTimeout=setTimeout(()=>{
-					this.clockStart=false;
+				this.clockTimeout = setTimeout(() => {
+					this.clockStart = false;
 					clearTimeout(this.clockTimeout);
-				},60000);
+				}, 60000);
 			}
 		}
 	},
@@ -137,7 +137,10 @@ var app = new Vue({
 			}
 		},
 		setClockTap() {
-			this.clockStart=false;
+			if (this.clockStart) {
+				this.clockStart = false;
+				return;
+			}
 			this.state = 'clock';
 			this.alarmClock.hasBeenSet = true;
 			if (this.clockState.length == 0) {
@@ -147,17 +150,17 @@ var app = new Vue({
 			} else if (this.clockState.length == 3) {
 				this.clockState = ['hours'];
 				return;
-			}else if(this.clockState.length==1&&'hours'==this.clockState[0]){
+			} else if (this.clockState.length == 1 && 'hours' == this.clockState[0]) {
 				this.clockState = ['minutes'];
 				return;
-			}else if(this.clockState.length==1&&'minutes'==this.clockState[0]){
+			} else if (this.clockState.length == 1 && 'minutes' == this.clockState[0]) {
 				this.clockState = ['seconds'];
 				return;
-			}else if(this.clockState.length==1&&'seconds'==this.clockState[0]){
-				this.timeSettings.hasBeenSet=true;
-				Object.assign(this.alarmClock,this.timeSettings);
-				this.clockState=[];
-				this.state='time';
+			} else if (this.clockState.length == 1 && 'seconds' == this.clockState[0]) {
+				this.timeSettings.hasBeenSet = true;
+				Object.assign(this.alarmClock, this.timeSettings);
+				this.clockState = [];
+				this.state = 'time';
 				return;
 			}
 		},
@@ -188,16 +191,16 @@ var app = new Vue({
 			// 秒
 			timeSettings.seconds.ten = this.getNumByIndex(seconds, 1);
 			timeSettings.seconds.one = this.getNumByIndex(seconds, 0);
-			
-			if(timeSettings.hours.ten==this.alarmClock.hours.ten&&
-			timeSettings.hours.one==this.alarmClock.hours.one&&
-			timeSettings.minutes.ten==this.alarmClock.minutes.ten&&
-			timeSettings.minutes.one==this.alarmClock.minutes.one&&
-			timeSettings.seconds.ten==this.alarmClock.seconds.ten&&
-			timeSettings.seconds.one==this.alarmClock.seconds.one&&
-			this.alarmClock.hasBeenSet
-			){
-				this.clockStart=true;
+
+			if (timeSettings.hours.ten == this.alarmClock.hours.ten &&
+				timeSettings.hours.one == this.alarmClock.hours.one &&
+				timeSettings.minutes.ten == this.alarmClock.minutes.ten &&
+				timeSettings.minutes.one == this.alarmClock.minutes.one &&
+				timeSettings.seconds.ten == this.alarmClock.seconds.ten &&
+				timeSettings.seconds.one == this.alarmClock.seconds.one &&
+				this.alarmClock.hasBeenSet
+			) {
+				this.clockStart = true;
 			}
 			if ('time' == this.state) {
 				this.timeSettings = timeSettings;
