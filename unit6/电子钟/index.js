@@ -73,8 +73,8 @@ var app = new Vue({
 	},
 	watch: {
 		clockStart(newVal) {
+			clearTimeout(this.clockTimeout);
 			if (newVal) {
-				clearTimeout(this.clockTimeout);
 				this.clockTimeout = setTimeout(() => {
 					this.clockStart = false;
 					clearTimeout(this.clockTimeout);
