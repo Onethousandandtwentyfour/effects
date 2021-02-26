@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>火焰效果</title>
+		<style>
+			@import './index.css';
+		</style>
+	</head>
+	<body>
+		<div id="app" class="flex-column-center">
+			<div class="outer flex-column-center" :class="triangeStyle">
+				<div class="triange flex-column-center">
+					<div class="triange-border tb-1"></div>
+					<div class="triange-border tb-2"></div>
+					<div class="triange-border tb-3"></div>
+				</div>
+				<div class="triange flex-column-center triange-2">
+					<div class="triange-border tb-1"></div>
+					<div class="triange-border tb-2"></div>
+					<div class="triange-border tb-3"></div>
+				</div>
+
+				<div class="particle-outer fire-1 flex-column-center fire-outer" :class="triangeStyle">
+					<template v-for="item of particleList">
+						<div class="particle" :class="particleStyle" :style="item" :key="item.id"></div>
+					</template>
+				</div>
+				<div class="particle-outer fire-2 flex-column-center fire-outer" :class="triangeStyle">
+					<template v-for="item of particleList">
+						<div class="particle" :class="particleStyle" :style="item" :key="item.id"></div>
+					</template>
+				</div>
+				<div class="particle-outer fire-3 flex-column-center fire-outer" :class="triangeStyle">
+					<template v-for="item of particleList">
+						<div class="particle" :class="particleStyle" :style="item" :key="item.id"></div>
+					</template>
+				</div>
+				<div class="particle-outer fire-4 flex-column-center fire-outer" :class="triangeStyle">
+					<template v-for="item of particleList">
+						<div class="particle" :class="particleStyle" :style="item" :key="item.id"></div>
+					</template>
+				</div>
+				<div class="particle-outer fire-5 flex-column-center fire-outer" :class="triangeStyle">
+					<template v-for="item of particleList">
+						<div class="particle" :class="particleStyle" :style="item" :key="item.id"></div>
+					</template>
+				</div>
+				<div class="particle-outer fire-6 flex-column-center fire-outer" :class="triangeStyle">
+					<template v-for="item of particleList">
+						<div class="particle" :class="particleStyle" :style="item" :key="item.id"></div>
+					</template>
+				</div>
+
+			</div>
+			<div class="btn btn-first" @click="triangePlayTap">点击转动</div>
+			<div class="btn btn-second" @click="particlePlayTap">点击生火</div>
+		</div>
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<script type="module" src="./index.js"></script>
+	</body>
+</html>
