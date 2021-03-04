@@ -49,6 +49,10 @@
 * 电子钟       [div+css](https://onethousandandtwentyfour.github.io/effects/unit6/电子钟/)
 * 火焰效果       [div+css](https://onethousandandtwentyfour.github.io/effects/unit6/火焰效果/)
 
+###### Unit6
+
+* 翻页时钟       [div+css](https://onethousandandtwentyfour.github.io/effects/unit7/翻页时钟/)
+
 ###### Extend
 
 - [星空](https://onethousandandtwentyfour.github.io/effects/extend/星空/)
