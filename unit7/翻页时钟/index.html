@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>翻页时钟</title>
+		<style>
+			@import './index.css';
+		</style>
+	</head>
+	<body>
+		<div id="app" class="flex-column-center" :style="skinsBgStyle">
+			<div class="date-outer flex-row-center">
+				<template v-for="(item,index) of dateTimeSettings.year">
+					<num-block :next-num="item*1" :key="numKey(index,'year')"></num-block>
+				</template>
+				<div class="date-pointer flex-column-center"></div>
+				<template v-for="(item,index) of dateTimeSettings.month">
+					<num-block :next-num="item*1" :key="numKey(index,'month')"></num-block>
+				</template>
+				<div class="date-pointer flex-column-center"></div>
+				<template v-for="(item,index) of dateTimeSettings.date">
+					<num-block :next-num="item*1" :key="numKey(index,'date')"></num-block>
+				</template>
+			</div>
+			<div class="clock-outer flex-row-center">
+				<template v-for="(item,index) of dateTimeSettings.hours">
+					<num-block :next-num="item*1" :key="numKey(index,'hours')"></num-block>
+				</template>
+				<div class="clock-pointer flex-column-center"></div>
+				<template v-for="(item,index) of dateTimeSettings.minutes">
+					<num-block :next-num="item*1" :key="numKey(index,'minutes')"></num-block>
+				</template>
+				<div class="clock-pointer flex-column-center"></div>
+				<template v-for="(item,index) of dateTimeSettings.seconds">
+					<num-block :next-num="item*1" :key="numKey(index,'seconds')"></num-block>
+				</template>
+			</div>
+			<div class="clock-state-btn" @click="changeAniState">{{aniStateText}}</div>
+			<template v-for="(item,index) of bgSkins">
+				<div class="clock-img-btn" :style="skinsBtnsStyle(item,index)" @click="changeBgSkin" :data-index="index"></div>
+			</template>
+		</div>
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<script type="module" src="./index.js"></script>
+	</body>
+</html>
