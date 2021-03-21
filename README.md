@@ -60,3 +60,4 @@
 - [~~擦除90%~~](https://onethousandandtwentyfour.github.io/effects/unit1/初识canvas/cachu.html)
 - [光照-玻璃](https://onethousandandtwentyfour.github.io/effects/extend/光照-玻璃/)
 - [砖墙拼接](https://onethousandandtwentyfour.github.io/effects/extend/砖墙拼接/)
+- [css&html实现环形进度条](https://onethousandandtwentyfour.github.io/effects/extend/circle-progress-by-css/)
