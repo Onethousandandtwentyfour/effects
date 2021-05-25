@@ -36,12 +36,6 @@
 * canvas绘画基础-2    [canvas](https://onethousandandtwentyfour.github.io/effects/unit5/canvas绘画基础-2/)
 * 加载动画            [canvas](https://onethousandandtwentyfour.github.io/effects/unit5/加载动画/)
 
-###### Unit5
-
-* svg蒙版和图案       [svg](https://onethousandandtwentyfour.github.io/effects/unit5/svg蒙版和图案/)
-* 擦雾动画            [div+css](https://onethousandandtwentyfour.github.io/effects/unit5/擦雾动画/div+css/)
-* canvas绘画基础-2    [canvas](https://onethousandandtwentyfour.github.io/effects/unit5/canvas绘画基础-2/)
-* 加载动画            [canvas](https://onethousandandtwentyfour.github.io/effects/unit5/加载动画/)
 
 ###### Unit6
 
@@ -49,7 +43,7 @@
 * 电子钟       [div+css](https://onethousandandtwentyfour.github.io/effects/unit6/电子钟/)
 * 火焰效果       [div+css](https://onethousandandtwentyfour.github.io/effects/unit6/火焰效果/)
 
-###### Unit6
+###### Unit7
 
 * 翻页时钟       [div+css](https://onethousandandtwentyfour.github.io/effects/unit7/翻页时钟/)
 
